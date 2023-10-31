@@ -13,39 +13,39 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     const password = document.getElementById("password").value;
     const passwordrep = document.getElementById("passwordrep").value;
 
-    if (password !=passwordrep) {
+    if (password != passwordrep) {
         return;
-    } 
+    }
     // Создаем объект данных
     const data = {
         first_name: name,
         last_name: surname,
-        adres:  adres,
+        adres: adres,
         email: email,
         city: miasto,
         postal: kod,
         apartment: mieszkanie,
         phone_number: numertel,
-        password: password 
-        
+        password: password
+
     };
 
     // Отправляем данные на сервер
-    fetch('https://carrentapp-xj9ak.ondigitalocean.app/auth/signup/', {
+    fetch('https://carrent-w2et2.ondigitalocean.app/auth/signup/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-  
-    .then(response => response.json())
-    .then(data => {
-        console.log('Данные успешно отправлены на сервер:', data);
-        // Здесь вы можете добавить логику обработки успешной отправки данных
-    })
-    .catch(error => {
-        console.error('Ошибка отправки данных на сервер:', error);
-        // Здесь вы можете добавить логику обработки ошибки
-    });
+
+        .then(response => response.json())
+        .then(data => {
+            console.log('Данные успешно отправлены на сервер:', data);
+            // Здесь вы можете добавить логику обработки успешной отправки данных
+        })
+        .catch(error => {
+            console.error('Ошибка отправки данных на сервер:', error);
+            // Здесь вы можете добавить логику обработки ошибки
+        });
 });
