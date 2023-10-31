@@ -33,14 +33,14 @@
 
 
 pages:
-  image: node:lts
-
+  image: ruby:2.7
   script:
-    - npx @11ty/eleventy --input=. --output=public
-
+    - gem install bundler
+    - bundle install
+    - cd frontend
+    - bundle exec jekyll build -d ../public
   artifacts:
     paths:
       - public
-
   only:
     - frontend
