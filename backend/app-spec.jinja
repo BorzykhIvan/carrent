@@ -6,7 +6,7 @@ features:
 ingress:
   rules:
   - component:
-      name: carrentproject
+      name: car-rent-backend
     cors:
       allow_credentials: true
       allow_headers:
@@ -29,7 +29,7 @@ ingress:
 name: {{ env.DO_APP_COMPONENT_NAME }}
 region: fra
 services:
-- dockerfile_path: Dockerfile
+- dockerfile_path: backend/Dockerfile
   envs:
   - key: DB_HOST
     scope: RUN_AND_BUILD_TIME
@@ -59,10 +59,10 @@ services:
     scope: RUN_AND_BUILD_TIME
     value: {{ env.AWS_SECRET_ACCESS_KEY }}
   gitlab:
-    branch: main
-    repo: mikhailmid/carrentproject
+    branch: backend
+    repo: mikhailmid/car_rent
   http_port: 80
   instance_count: 1
   instance_size_slug: basic-xxs
-  name: carrentproject
-  source_dir: /
+  name: car-rent-backend
+  source_dir: backend
