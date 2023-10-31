@@ -6,10 +6,10 @@
   before_script:
     - pip install jinja2
   script:
-    - python generate_yaml.py
+    - python backend/generate_yaml.py
   artifacts:
     paths:
-      - app-spec.yaml
+      - backend/app-spec.yaml
     expire_in: 2 minutes
   only:
     - backend
@@ -25,7 +25,7 @@
   script:
     - /app/doctl auth init -t $DO_API_TOKEN
     - /app/doctl apps create-deployment $DO_APP_ID --force-rebuild
-    - /app/doctl apps update $DO_APP_ID --spec app-spec.yaml
+    - /app/doctl apps update $DO_APP_ID --spec backend/app-spec.yaml
   only:
     - backend
   dependencies:
