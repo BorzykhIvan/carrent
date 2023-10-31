@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Создайте функцию для получения данных и обновления страницы
   function fetchDataAndPopulatePage() {
-    fetch('https://carrentapp-xj9ak.ondigitalocean.app/api/car/', {
+    fetch('https://carrent-w2et2.ondigitalocean.app//api/car/', {
       method: 'GET',
       headers: {
         'accept': 'application/json',

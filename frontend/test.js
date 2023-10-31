@@ -2,10 +2,10 @@ function checkSessionIDCookie() {
     var sessionIDCookie = getCookie('csrftoken');
     var resultElement = document.getElementById('result');
     var loginButton = document.getElementById('loginButton');
-    
+
     if (sessionIDCookie) {
         resultElement.innerHTML = 'Cookie sessionid найден. Пользователь авторизован.';
-        
+
         // Заменяем кнопку на картинку
         loginButton.innerHTML = '<img src="img/Vector.svg">';
     } else {
