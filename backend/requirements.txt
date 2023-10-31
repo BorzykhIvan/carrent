@@ -1,0 +1,11 @@
+Django
+djangorestframework
+psycopg2
+drf-yasg
+drf-yasg[validation]
+django-cors-headers
+gunicorn
+django-storages[s3]
+Pillow
+drf-nested-routers
+django-filter
