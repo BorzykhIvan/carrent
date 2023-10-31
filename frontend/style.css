@@ -1,0 +1,355 @@
+*{
+    font-family: "Mazda Type Regular";
+}
+
+/* @font-face {
+    font-family: "Mazda Type Regular";
+    src: url("../fonts/MazdaTypeRegular.woff2") format('woff2'),
+        url("../fonts/MazdaTypeRegular.woff") format('woff');
+} */
+
+*::before,
+*::after{
+    box-sizing: inherit;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+.container-main{
+    max-width: 1220px;
+    padding:0 10px;
+    margin: 0 auto;
+}
+
+.body{
+    line-height: 1.2;
+    font-size:14px;
+    font-weight: 400;
+    color: black;
+}
+/*----------------------------------------------MENU----------------------------------------------------*/
+.header{
+    padding-top: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 9;
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.7);
+
+}
+
+.navbar__wrap {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.hamb {
+  display: none;
+}
+
+.popup {
+  display: none;
+}
+
+.logoo {
+  
+width: 60px;
+
+}
+
+
+
+.menu > li > a {
+  text-decoration: none;
+}
+
+.navbar__wrap .menu {
+  display: flex;
+}
+
+.navbar__wrap .menu > li {
+  display: flex;
+  align-items: stretch;
+}
+
+.navbar__wrap .menu > li > a {
+  display: flex;
+  align-items: center;
+  padding: 0 45px;
+  color: rgb(255, 255, 255);
+}
+
+.navbar__wrap .menu > li > a:hover {
+  color: rgb(255, 255, 255);
+}
+
+
+/*----------------------------------------------MAIN PAGE----------------------------------------------------*/
+
+
+.promo{
+    background-image:url(img/szybka-jazda-mini-coupe-na-drodze-z-wlaczonymi-swiatlami-przednimi\ 1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.promo-inner{
+    display: flex;
+    flex-direction: column;
+    min-height:80vh; 
+    text-align: center;
+    padding-top: 150px;
+    
+}
+
+.title{
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-size: 75px;
+    margin-bottom: 10px;
+    color: whitesmoke;
+    padding-top: 200px;
+}
+
+.subtitle{
+    font-weight: 400;
+    margin-bottom: 10px;
+    align-self: center;
+    color: whitesmoke;
+    font-size: 48px;
+    
+}
+
+.promo-text{
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: whitesmoke;
+}
+
+.promo-arrow{
+    margin-top: auto;
+    margin-bottom: 30px;
+    align-self: center;
+}
+
+.flota{
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+.info-flota{
+
+    padding-top: 90px;
+    text-align: center;
+}
+
+.banner{
+    font-weight: 500;
+    color: red;
+    font-size: 25px;
+}
+
+.cartools{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+#carList{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.brandcar{
+    display: flex;
+    justify-content: center;
+    margin: 0 20px 25px 20px;
+}
+
+.brand{
+    padding-right: 10px;
+}
+
+.car{
+     height: 370px;
+     width: 350px;
+    border: 3px solid red;
+    border-radius: 70px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.carimgg{
+    width: 250px;
+    padding-top: 35px;
+}
+
+.brand.model{
+    font-weight: 550;
+}
+
+.cartype{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transmision_logoo,.fuel_logoo,.day_logoo{
+    width: 25px;
+}
+
+.transmision_type,.fuel_type,.price{
+    padding-right: 15px;
+    padding-left: 5px;
+    font-weight: 500;
+}
+
+.price{
+    color: red;
+}
+
+.carbutton{
+    display: flex;
+    margin-top: 40px;
+    background-color: red;
+    height: 50px;
+    width: 201px;
+    border-radius: 40px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+/* wremenno  */
+
+input[type=text], select ,input[type=number], input[type=password]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #D50000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #D50000;
+  }
+  
+  .content{
+    background-image: url(/img/pexels-pixabay-63294.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+.form{
+        max-width: 1220px;
+        margin: 0 auto;
+        background-color: rgba(239, 237, 237, 0.829);
+        padding: 30px;
+        width: 600px;
+}
+
+/*zalupa0000000---------------------------*/
+
+.content_login,.content_registration{
+  background-image: url(/img/loginBackground.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.signup_link{
+ 
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
+}
+.signup_link a{
+  color: #ff0000;
+  text-decoration: none;
+}
+.signup_link a:hover{
+  text-decoration: underline;
+}
+.form_login{
+  max-width: 350px;
+  margin: 0 auto;
+  background-color: rgba(239, 237, 237, 0.829);
+  padding: 30px;
+  width: 600px;
+}
+.submit-button  > input[type=submit] {
+width: 250px;
+}
+
+.submit-button {
+  
+  display: flex;
+  justify-content: center;
+  
+}
+
+.miastokod,.adresmiesz {
+  display:flex;
+  justify-content: space-between;
+}
+.miasto,.adres{
+ margin-right: 20px;
+}
+.kod,.mieszkanie {
+  margin-left: 20px;
+}
+
+.content_registration{
+  height: 120vh;
+}
+
+.myframe {
+  display: block;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  }
+
