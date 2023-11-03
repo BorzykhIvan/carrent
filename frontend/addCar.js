@@ -7,31 +7,36 @@ document.getElementById("carForm").addEventListener("submit", function (event) {
     const transmission_type = document.getElementById("transmission_type").value;
     const fuel_type = document.getElementById("fuel_type").value;
     const day_price = parseFloat(document.getElementById("day_price").value); // Преобразуем в число
+    const imageInput = document.getElementById("image");
+    const image = imageInput.files[0]; // Получаем выбранный файл изображения
+    const racetrack = document.getElementById("racetrack").checked;
+    const events = document.getElementById("events").checked;
+    const taxi = document.getElementById("taxi").checked;
 
     // Создаем объект данных
-    const data = {
-        brand: brand,
-        model: model,
-        transmission_type: transmission_type,
-        fuel_type: fuel_type,
-        day_price: day_price
-    };
+    const data = new FormData(); // Используем FormData для отправки изображения
+    data.append('brand', brand);
+    data.append('model', model);
+    data.append('transmission_type', transmission_type);
+    data.append('fuel_type', fuel_type);
+    data.append('day_price', day_price);
+    data.append('image', image);
+    data.append('racetrack', racetrack);
+    data.append('events', events);
+    data.append('taxi', taxi);
 
     // Отправляем данные на сервер
-    fetch('https://carrent-w2et2.ondigitalocean.app//api/car/', {
+    fetch('https://carrent-w2et2.ondigitalocean.app/api/cars/', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        body: data
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Данные успешно отправлены на сервер:', data);
-            // Здесь вы можете добавить логику обработки успешной отправки данных
-        })
-        .catch(error => {
-            console.error('Ошибка отправки данных на сервер:', error);
-            // Здесь вы можете добавить логику обработки ошибки
-        });
+    .then(response => response.json())
+    .then(data => {
+        console.log('Данные успешно отправлены на сервер:', data);
+        // Здесь вы можете добавить логику обработки успешной отправки данных
+    })
+    .catch(error => {
+        console.error('Ошибка отправки данных на сервер:', error);
+        // Здесь вы можете добавить логику обработки ошибки
+    });
 });
