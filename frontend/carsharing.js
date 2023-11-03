@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .then(response => response.json())
       .then(data => {
         data.forEach(car => {
-          const eventsCheckbox = car.events ? '<div class="events"><div><img class="checked" src="img/free-png 1.svg"></div><p class="checked_text">okazja</p></div>' : '';
-          const taxiCheckbox = car.taxi ? '<div class="events"><div><img class="checked" src="img/free-png 1.svg"></div><p class="checked_text">taxi</p></div>' : '';
-          const racetrackCheckbox = car.racetrack ? '<div class="events"><div><img class="checked" src="img/free-png 1.svg"></div><p class="checked_text">tor</p></div>' : '';
+          const eventsCheckbox = car.events ? '<div class="events"><div><img class="checked" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/done.svg"></div><p class="checked_text">okazja</p></div>' : '';
+          const taxiCheckbox = car.taxi ? '<div class="events"><div><img class="checked" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/done.svg"></div><p class="checked_text">taxi</p></div>' : '';
+          const racetrackCheckbox = car.racetrack ? '<div class="events"><div><img class="checked" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/done.svg"></div><p class="checked_text">tor</p></div>' : '';
 
           const carElement = document.createElement('div');
           carElement.classList.add('car');
@@ -34,11 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
               </div>
             </div>
             <div class="cartype">
-              <a class="transmision_logo"><img class="transmision_logoo" src="img/manual-transmission_6500196 1.png"></a>
+              <a class="transmision_logo"><img class="transmision_logoo" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/manual-transmission_6500196%201.png"></a>
               <p class="transmision_type">${car.transmission_type}</p>
-              <a class="fuel_logo"><img class="fuel_logoo" src="img/gas-station_9415189.png"></a>
+              <a class="fuel_logo"><img class="fuel_logoo" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/gas-station.png"></a>
               <p class="fuel_type">${car.fuel_type}</p>
-              <a class="day_logo"><img class="day_logoo" src="img/one_8459026.png"></a>
+              <a class="day_logo"><img class="day_logoo" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/one.png"></a>
               <p class="price">${car.day_price} ZŁ</p>
             </div>
             <div class="carbutton">

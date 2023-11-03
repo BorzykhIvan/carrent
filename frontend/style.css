@@ -95,7 +95,7 @@ width: 60px;
 
 
 .promo{
-    background-image:url(img/szybka-jazda-mini-coupe-na-drodze-z-wlaczonymi-swiatlami-przednimi\ 1.jpg);
+    background-image:url(https://fra1.digitaloceanspaces.com/carrentbucket/static/main_back.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -375,7 +375,7 @@ input[type=text], select ,input[type=number]{
 .description{
   height: 400px;
   width: 1200px;
-  background-image:url(/Front/img/info_partback.png);
+  background-image:url(https://fra1.digitaloceanspaces.com/carrentbucket/static/info_partback.png);
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
@@ -439,8 +439,33 @@ input[type=text], select ,input[type=number]{
 /* Yauhen  */
 
 
-.content_login,.content_registration{
-  background-image: url(/img/loginBackground.png);
+input[type=text], select ,input[type=number], input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #D50000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #D50000;
+}
+
+.content{
+  background-image: url(https://fra1.digitaloceanspaces.com/carrentbucket/static/addcar_back.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -449,57 +474,77 @@ input[type=text], select ,input[type=number]{
   align-items: center;
 }
 
+.form{
+      max-width: 1220px;
+      margin: 0 auto;
+      background-color: rgba(239, 237, 237, 0.829);
+      padding: 30px;
+      width: 600px;
+}
+
+/*zalupa0000000---------------------------*/
+
+.content_login,.content_registration{
+background-image: url(https://fra1.digitaloceanspaces.com/carrentbucket/static/login_back.png);
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+height: 100vh;
+display: flex;
+align-items: center;
+}
+
 .signup_link{
- 
-  text-align: center;
-  font-size: 16px;
-  color: #666666;
+
+text-align: center;
+font-size: 16px;
+color: #666666;
 }
 .signup_link a{
-  color: #ff0000;
-  text-decoration: none;
+color: #ff0000;
+text-decoration: none;
 }
 .signup_link a:hover{
-  text-decoration: underline;
+text-decoration: underline;
 }
 .form_login{
-  max-width: 350px;
-  margin: 0 auto;
-  background-color: rgba(239, 237, 237, 0.829);
-  padding: 30px;
-  width: 600px;
+max-width: 350px;
+margin: 0 auto;
+background-color: rgba(239, 237, 237, 0.829);
+padding: 30px;
+width: 600px;
 }
 .submit-button  > input[type=submit] {
 width: 250px;
 }
 
 .submit-button {
-  
-  display: flex;
-  justify-content: center;
-  
+
+display: flex;
+justify-content: center;
+
 }
 
 .miastokod,.adresmiesz {
-  display:flex;
-  justify-content: space-between;
+display:flex;
+justify-content: space-between;
 }
 .miasto,.adres{
- margin-right: 20px;
+margin-right: 20px;
 }
 .kod,.mieszkanie {
-  margin-left: 20px;
+margin-left: 20px;
 }
 
 .content_registration{
-  height: 120vh;
+height: 120vh;
 }
 
 .myframe {
-  display: block;
-  margin: auto;
-  width: 100%;
-  text-align: center;
-  margin-top: 50px;
-  }
+display: block;
+margin: auto;
+width: 100%;
+text-align: center;
+margin-top: 50px;
+}
 
