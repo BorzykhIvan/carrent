@@ -1,72 +1,98 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@300;500;600&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Carsharing</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@300;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Carsharing</title>
 </head>
+
 <body>
-    <header class="header">
-        <nav class="navbar">
-          <div class="container">
-            <div class="navbar__wrap">
-              <div class="hamb">
-                <div class="hamb__field" id="hamb">
-                  <span class="bar"></span> <span class="bar"></span>
-                  <span class="bar"></span>
-                </div>
-              </div>
-              <a href="carsharing.html" class="logo" id="logo"><img class="logoo" src="img/logo4 1.png" alt="mazdalogo"></a>
-              <ul class="menu" id="menu">
-                <li><a href="flota.html">Flota</a></li>
-                <li><a href="mazda6gg.html">Mapa</a></li>
-                <li><a href="mazda6gh.html">Promocje</a></li>
-                <li><a href="mazda6gj.html">Pomoc</a></li>
-                <li><a href="login.html"><img src="img/Vector.svg"></a></li>
-              </ul>
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar__wrap">
+          <div class="hamb">
+            <div class="hamb__field" id="hamb">
+              <span class="bar"></span> <span class="bar"></span>
+              <span class="bar"></span>
             </div>
           </div>
-        </nav>
-        <div class="popup" id="popup"></div>
-      </header>
-    <section>
-        <div class="content">
-        <div class="form">
-            <form id="carForm"> <!-- Добавили идентификатор "carForm" к форме -->
-                <label for="brand">Brand</label>
-                <input type="text" id="brand" name="brand" placeholder="Brand">
-                
-                <label for="model">Model</label>
-                <input type="text" id="model" name="model" placeholder="Model">
-                
-                <label for="transmission_type">Gearbox</label>
-                <select id="transmission_type" name="transmission_type"> <!-- Изменили name на "gearbox" -->
-                    <option value="MANUAL">MANUAL</option>
-                    <option value="AUTOMAT">AUTOMAT</option>
-                </select>
-                
-                <label for="fuel_type">Fuel</label>
-                <select id="fuel_type" name="fuel_type"> <!-- Изменили name на "fuel" -->
-                    <option value="PB 98">PB 98</option>
-                    <option value="PB 95">PB 95</option>
-                    <option value="ON">ON</option>
-                    <option value="ELECTRIC">ELECTRIC</option>
-                </select>
-                
-                <label for="day_price">Price</label>
-                <input type="number" id="day_price" name="day_price" placeholder="Price" step="0.1"> <!-- Изменили name на "day_price" -->
-                
-                <input type="submit" value="Submit">
-            </form>
+          <a href="/" class="logo" id="logo"><img class="logoo" src="img/logo4 1.png" alt="mazdalogo"></a>
+          <ul class="menu" id="menu">
+            <li><a href="/flota">Flota</a></li>
+            <li><a href="/map">Mapa</a></li>
+            <li><a href="#">Promocje</a></li>
+            <li><a href="#">Pomoc</a></li>
+            <li><a href="/login"><img src="img/Vector.svg"></a></li>
+          </ul>
         </div>
-        </div>
-    </section>
+      </div>
+    </nav>
+    <div class="popup" id="popup"></div>
+  </header>
+  <section>
+    <div class="content">
+      <div class="form">
+        <form id="carForm"> <!-- Добавили идентификатор "carForm" к форме -->
+          <label for="brand">Brand</label>
+          <input type="text" id="brand" name="brand" placeholder="Brand">
+
+          <label for="model">Model</label>
+          <input type="text" id="model" name="model" placeholder="Model">
+
+          <label for="transmission_type">Gearbox</label>
+          <select id="transmission_type" name="transmission_type"> <!-- Изменили name на "gearbox" -->
+            <option value="MANUAL">MANUAL</option>
+            <option value="AUTOMAT">AUTOMAT</option>
+          </select>
+
+          <label for="fuel_type">Fuel</label>
+          <select id="fuel_type" name="fuel_type"> <!-- Изменили name на "fuel" -->
+            <option value="PB 98">PB 98</option>
+            <option value="PB 95">PB 95</option>
+            <option value="ON">ON</option>
+            <option value="ELECTRIC">ELECTRIC</option>
+          </select>
+
+          <label for="day_price">Price</label>
+          <input type="number" id="day_price" name="day_price" placeholder="Price" step="0.1">
+          <!-- Изменили name на "day_price" -->
+
+          <!-- 1-й чекбокс: Tor -->
+          <label for="racetrack">Tor</label>
+          <input type="checkbox" id="racetrack" name="racetrack" value="true">
+
+          <!-- 2-й чекбокс: Okazja -->
+          <label for="events">Okazja</label>
+          <input type="checkbox" id="events" name="events" value="true">
+
+          <!-- 3-й чекбокс: Taxi -->
+          <label for="taxi">Taxi</label>
+          <input type="checkbox" id="taxi" name="taxi" value="true">
+
+          <label for="image">Image</label><br>
+          <input type="file" id="image" name="image">
+
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="foter">
+      <div class="footer_logo"><img src="/img/Group 1.svg" class="footer_img"></div>
+      <div class="footer_discription"><p>Skontaktuj się z nami: <br><br>carsharing@carsharing.pl</p></div>
+    </div>
+  </footer>
 </body>
 <script src="addCar.js"></script>
+
 </html>
