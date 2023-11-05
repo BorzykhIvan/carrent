@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function fetchDataAndPopulatePage() {
     const carList = document.getElementById('carList');
     carList.innerHTML = '';
-
+    
     fetch('https://carrent-w2et2.ondigitalocean.app/api/cars/', {
       method: 'GET',
       headers: {
@@ -42,9 +42,19 @@ document.addEventListener("DOMContentLoaded", function () {
               <p class="price">${car.day_price} ZŁ</p>
             </div>
             <div class="carbutton">
-              <p class="deleteCar" data-car-id="${car.id}">ZAREZERWUJ</p>
+              <p class="deleteCar" data-car-id="${car.id}">ZAREZERWUJ</p> <!-- Здесь текст "ZAREZERWUJ" -->
             </div>
           `;
+
+          const deleteButton = carElement.querySelector('.deleteCar');
+          deleteButton.addEventListener('click', () => {
+            const carId = deleteButton.getAttribute('data-car-id'); // Получите идентификатор автомобиля
+          
+            if (deleteButton.textContent === 'USUN') {
+              // Вызовите функцию удаления автомобиля с сервера
+              deleteCarFromServer(carId, carElement);
+            }
+          });
 
           carList.appendChild(carElement);
         });
@@ -75,10 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Обработчик события для кнопки "editbutton"
+  // Обработчик события для кнопки "Usuń"
   const editButton = document.querySelector('.editbutton a');
   editButton.addEventListener('click', () => {
-    // Измените текст в "carbutton" на "USUN" после нажатия
+    // Измените текст в "carbutton" на "USUN"
     const carButtons = document.querySelectorAll('.carbutton p.deleteCar');
     carButtons.forEach(button => {
       if (button.textContent === 'ZAREZERWUJ') {
@@ -89,3 +99,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchDataAndPopulatePage();
 });
+
+
