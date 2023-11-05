@@ -190,6 +190,7 @@ a {
   flex-flow: row wrap;
   justify-content: center;
   padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 .events {
@@ -522,14 +523,13 @@ input[type=submit]:hover {
   width: 600px;
 }
 
-/*zalupa0000000---------------------------*/
+/*login,registr---------------------------*/
 
 .content_login,
 .content_registration {
   background-image: url(https://fra1.digitaloceanspaces.com/carrentbucket/static/login_back.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -538,12 +538,11 @@ input[type=submit]:hover {
 .signup_link {
 
   text-align: center;
-  font-size: 16px;
-  color: #666666;
+  font-size: 12px;
 }
 
 .signup_link a {
-  color: #ff0000;
+  color: #D50000;
   text-decoration: none;
 }
 
@@ -552,22 +551,26 @@ input[type=submit]:hover {
 }
 
 .form_login {
-  max-width: 350px;
+  max-width: 300px;
+  min-height: 250px;
   margin: 0 auto;
   background-color: rgba(239, 237, 237, 0.829);
   padding: 30px;
-  width: 600px;
+  display: flex;
+  align-items: center;
 }
 
+
 .submit-button>input[type=submit] {
-  width: 250px;
+  width: 220px;
 }
 
 .submit-button {
 
   display: flex;
   justify-content: center;
-
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .miastokod,
