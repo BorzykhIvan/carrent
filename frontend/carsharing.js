@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function fetchDataAndPopulatePage() {
     const carList = document.getElementById('carList');
     carList.innerHTML = '';
-    
+
     fetch('https://carrent-w2et2.ondigitalocean.app/api/cars/', {
       method: 'GET',
       headers: {
@@ -42,22 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
               <p class="price">${car.day_price} ZŁ</p>
             </div>
             <div class="carbutton">
-              <p class="deleteCar" data-car-id="${car.id}">ZAREZERWUJ</p> <!-- Здесь текст "ZAREZERWUJ" -->
+              <p class="deleteCar" data-car-id="${car.id}">ZAREZERWUJ</p>
             </div>
           `;
-
-          const deleteButton = carElement.querySelector('.deleteCar');
-          deleteButton.addEventListener('click', () => {
-            const carId = deleteButton.getAttribute('data-car-id'); // Получите идентификатор автомобиля
-
-            if (deleteButton.textContent === 'ZAREZERWUJ') {
-              // Измените текст на "USUN" после нажатия
-              deleteButton.textContent = 'USUN';
-            } else {
-              // Вызовите функцию удаления автомобиля с сервера
-              deleteCarFromServer(carId, carElement);
-            }
-          });
 
           carList.appendChild(carElement);
         });
@@ -88,10 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Обработчик события для кнопки "Usuń"
+  // Обработчик события для кнопки "editbutton"
   const editButton = document.querySelector('.editbutton a');
   editButton.addEventListener('click', () => {
-    // Измените текст в "carbutton" на "USUN"
+    // Измените текст в "carbutton" на "USUN" после нажатия
     const carButtons = document.querySelectorAll('.carbutton p.deleteCar');
     carButtons.forEach(button => {
       if (button.textContent === 'ZAREZERWUJ') {
@@ -102,5 +89,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchDataAndPopulatePage();
 });
-
-
