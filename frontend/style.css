@@ -179,6 +179,65 @@ a {
   font-size: 30px;
 }
 
+
+/* Button Styles */
+
+.editCar, .addbutton {
+  display: inline-flex;
+  height: 40px;
+  width: 150px;
+  border-radius: 70px;
+  border: 2px solid #D50000;
+  color: #D50000;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: .8em;
+  letter-spacing: 1.5px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+
+/* First Button */
+
+#arrow-hover {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  transform: translateX(60px);
+  opacity: 0;
+  -webkit-transition: all .25s cubic-bezier(.14, .59, 1, 1.01);
+  transition: all .15s cubic-bezier(.14, .59, 1, 1.01);
+  margin: 0;
+  padding: 0 5px;
+}
+
+a#button-1:hover img {
+  width: 15px;
+  opacity: 1;
+  transform: translateX(50px);
+}
+
+
+#arrow-hover2 {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  transform: translateX(20px);
+  opacity: 0;
+  -webkit-transition: all .25s cubic-bezier(.14, .59, 1, 1.01);
+  transition: all .15s cubic-bezier(.14, .59, 1, 1.01);
+  margin: 0 0px;
+}
+
+a#button-2:hover img {
+  width: 15px;
+  opacity: 1;
+  transform: translateX(5px);
+}
+
 .cartools {
   display: flex;
   justify-content: space-evenly;
