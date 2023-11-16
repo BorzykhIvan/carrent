@@ -225,7 +225,7 @@ a#button-1:hover img {
   width: 15px;
   height: 15px;
   position: absolute;
-  transform: translateX(20px);
+  transform: translate(20px, -1.2px);
   opacity: 0;
   -webkit-transition: all .25s cubic-bezier(.14, .59, 1, 1.01);
   transition: all .15s cubic-bezier(.14, .59, 1, 1.01);
@@ -235,13 +235,53 @@ a#button-1:hover img {
 a#button-2:hover img {
   width: 15px;
   opacity: 1;
-  transform: translateX(5px);
+  transform: translate(3px, -1.2px);
 }
 
 .cartools {
   display: flex;
   justify-content: space-evenly;
   margin-top: 50px;
+}
+
+#filterForm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #D50000;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  margin-top: 50px;
+}
+
+label {
+  margin-right: 20px;
+}
+
+label:not(:first-child):not(:last-child){
+  margin-left: 20px;
+}
+
+select, input {
+  padding: 5px;
+  border: 1px solid #C5C5C5;
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  color: white;
+}
+
+select {
+  width: 100px;
+  color: black;
+}
+
+input {
+  width: 80px;
+}
+
+input::placeholder {
+  color: black;
 }
 
 #carList {
@@ -365,6 +405,129 @@ a#button-2:hover img {
   font-size: 15px;
 }
 
+.reservation {
+  position: fixed;
+  height: 90vh;
+  width: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+}
+
+.reservation_container{
+  display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carimgg_reservation{
+  width: 230px;
+  margin-top: 5px;
+  height: 150px;
+}
+
+.brandmodel{
+  display: flex;
+  justify-content: center;
+  margin: 0 20px 25px 20px;
+}
+
+.reserv_part1,.reserv_part2,.reserv_loyal,.promo_reservation{
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.start_date_reservation,.end_date_reservation,.level_reservation,.kod_reservation{
+  width: 40%;
+  height: 100%;
+  background-color: #F0F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start_date_reservation1,.end_date_reservation1,.kod_reservation1{
+  width: 60%;
+  height: 100%;
+  background-color: #D9D9D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.level_reservation1{
+  width: 60%;
+  height: 100%;
+  background-color: #D9D9D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D50000;
+}
+
+.price_reservation_text{
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.price_reservation1{
+  width: 60%;
+  height: 100%;
+  display: flex;
+}
+
+.price_r{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price_button{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #D50000;
+  color: white;
+}
+
+.price_reservation{
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  height: 8vh;
+  display: flex;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.carbutton_reservation {
+  display: flex;
+  margin-top: 10px;
+  background: #D50000;
+  height: 50px;
+  width: 201px;
+  border-radius: 40px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
 /* wremenno  */
 
 input[type=text],

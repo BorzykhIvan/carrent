@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
               ${racetrackCheckbox}
             </div>
             <div class="carimg">
-              <img class="carimgg" src="${car.image_url}">
+              <img class="carimgg" src="${car.image_url}" data-car-id="${car.id}">
               <div class="brandcar">
                 <p class="brand">${car.brand}</p>
                 <p class="model">${car.model}</p>
@@ -42,16 +42,14 @@ document.addEventListener("DOMContentLoaded", function () {
               <p class="price">${car.day_price} ZŁ</p>
             </div>
             <div class="carbutton">
-              <p class="deleteCar" data-car-id="${car.id}">ZAREZERWUJ</p> <!-- Здесь текст "ZAREZERWUJ" -->
+              <p class="deleteCar" data-car-id="${car.id}">ZAREZERWUJ</p> <!-- Здесь текст "ZAREZERWUJ" -->    
             </div>
           `;
 
           const deleteButton = carElement.querySelector('.deleteCar');
           deleteButton.addEventListener('click', () => {
-            const carId = deleteButton.getAttribute('data-car-id'); // Получите идентификатор автомобиля
-          
+            const carId = deleteButton.getAttribute('data-car-id');
             if (deleteButton.textContent === 'USUN') {
-              // Вызовите функцию удаления автомобиля с сервера
               deleteCarFromServer(carId, carElement);
             }
           });
@@ -64,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+  
   // Функция для удаления автомобиля с сервера
   function deleteCarFromServer(carId, carElement) {
     fetch(`https://carrent-w2et2.ondigitalocean.app/api/cars/${carId}`, {
@@ -75,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then(response => {
         if (response.ok) {
-          carList.removeChild(carElement); // Удалите родительский элемент автомобиля
+          carList.removeChild(carElement);
         } else {
           console.error('Произошла ошибка при удалении автомобиля.');
         }
@@ -88,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Обработчик события для кнопки "Usuń"
   const editButton = document.querySelector('.editbutton a');
   editButton.addEventListener('click', () => {
-    // Измените текст в "carbutton" на "USUN"
     const carButtons = document.querySelectorAll('.carbutton p.deleteCar');
     carButtons.forEach(button => {
       if (button.textContent === 'ZAREZERWUJ') {
@@ -99,5 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchDataAndPopulatePage();
 });
-
-
+  
+const reservationScript = document.createElement('script');
+reservationScript.src = 'reservation.js';
+document.head.appendChild(reservationScript);
