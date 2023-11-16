@@ -1,20 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const carList = document.getElementById('carList');
+  const carList = document.getElementById('carList');
 
-    carList.addEventListener('click', function (event) {
-        const target = event.target;
+  carList.addEventListener('click', function (event) {
+      const target = event.target;
 
-        // Проверяем, была ли нажата кнопка "ZAREZERWUJ"
-        if (target.classList.contains('deleteCar') && target.textContent === 'ZAREZERWUJ') {
-            const carElement = target.closest('.car');
-            const carId = target.getAttribute('data-car-id');
-            const imageUrl = carElement.querySelector('.carimgg').getAttribute('src');
-            const brand = carElement.querySelector('.brand').textContent;
-            const model = carElement.querySelector('.model').textContent;
+      // Проверяем, была ли нажата кнопка "ZAREZERWUJ"
+      if (target.classList.contains('deleteCar') && target.textContent === 'ZAREZERWUJ') {
+          const carElement = target.closest('.car');
+          const carId = target.getAttribute('data-car-id');
+          const imageUrl = carElement.querySelector('.carimgg').getAttribute('src');
+          const brand = carElement.querySelector('.brand').textContent;
+          const model = carElement.querySelector('.model').textContent;
 
-            showReservationInfo(imageUrl, brand, model);
-        }
-    });
+          // Проверяем, существует ли уже блок с классом "reservation"
+          if (!document.querySelector('.reservation')) {
+              showReservationInfo(imageUrl, brand, model);
+          }
+      }
+  });
+
 
     function showReservationInfo(imageUrl, brand, model) {
         // Создаем блок для отображения информации о машине
