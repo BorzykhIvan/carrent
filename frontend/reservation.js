@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   carList.addEventListener('click', function (event) {
       const target = event.target;
 
-      // Проверяем, была ли нажата кнопка "ZAREZERWUJ"
-      if (target.classList.contains('deleteCar') && target.textContent === 'ZAREZERWUJ') {
+      // Проверяем, была ли нажата кнопка "carbutton" или текст "ZAREZERWUJ"
+      if (target.classList.contains('carbutton') || (target.classList.contains('deleteCar') && target.textContent === 'ZAREZERWUJ')) {
           const carElement = target.closest('.car');
           const carId = target.getAttribute('data-car-id');
           const imageUrl = carElement.querySelector('.carimgg').getAttribute('src');
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="carbutton_reservation">
           <p >ZAREZERWUJ</p>  
         </div>
-        <button class="close-button">Close</button>
+        <button class="close-button"><img class="close_button" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/icon%20_cancel.svg"></button>
         </div>
       `;
 

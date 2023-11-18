@@ -822,3 +822,149 @@ input[type=submit]:hover {
   text-align: center;
   margin-top: 50px;
 }
+
+/* loyal page */
+
+.container_loyal {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.donut_div {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Добавим высоту для родительского элемента .donut_div */
+
+}
+
+.red-arc {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#arrow{
+  width: 150px;
+  transition: transform 1s linear; /* Добавим анимацию для плавности поворота */
+}
+
+.arrow_div{
+  position: absolute;
+  margin-right: 145px;
+}
+
+#bubble{
+  width: 100%;
+}
+
+.unit:hover,
+.hovered {
+  opacity: 0.8;
+  stroke-width: 9;
+}
+
+.unit {
+  stroke-width: 6.9;
+  fill: none; 
+  stroke-dasharray: 10 100;
+  stroke-dashoffset: 20;
+  transition: stroke 0.3s ease, opacity 0.5s ease; /* Добавлено свойство для анимации появления */
+  opacity: 0; /* Начальное значение непрозрачности */
+  cursor: pointer;
+  
+  animation-name: render;
+  animation-duration: 1.5s;
+  transition-property: all; 
+  transition-duration: 1.5s;
+}
+
+.unit:nth-child(2) {
+  stroke: #D50000;
+  stroke-dasharray: 10 100;
+  stroke-dashoffset: 20;
+  animation: appear 0.5s linear 2.5s forwards;
+
+}
+
+.unit:nth-child(3) {
+  stroke: #D45656  ;
+  stroke-dasharray: 10 100;
+  stroke-dashoffset: 30;
+  animation: appear 0.5s linear 2s forwards;
+
+}
+
+.unit:nth-child(4) {
+  stroke: #F58383;
+  stroke-dasharray: 10  100;
+  stroke-dashoffset: 40;
+  animation: appear 0.5s linear 1.5s forwards;
+
+}
+
+.unit:nth-child(5) {
+  stroke: #FFB5B5;
+  stroke-dasharray: 10 100;
+  stroke-dashoffset: 50;
+  animation: appear 0.5s linear 1s forwards;
+
+}
+
+.unit:nth-child(6) {
+  stroke: #FFE5E5  ;
+  stroke-dasharray: 10 100;
+  stroke-dashoffset: 60;
+  animation: appear 0.5s linear 0.5s forwards;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+.level_text{
+  position: absolute;
+  margin-top: 230px;
+  flex-direction: column;
+  align-items: center;
+  display: none;
+  text-transform: uppercase;
+  width: 576px;
+  height: 140px;
+  justify-content:center;
+  border-radius: 20px;
+}
+
+.level_description,.additional_description ,.data-third-description , .data-last-description{
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.level_description ,.level{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.additional_description,.data-third-description,.data-last-description{
+  font-size: 15px;
+  font-weight:normal;
+}
+
+.close_button{
+  height: 27px;
+}
+
+.close-button{
+  border: none;
+  background: none;
+  position: absolute;
+  left: 90%;
+}
