@@ -244,7 +244,7 @@ a#button-2:hover img {
   margin-top: 50px;
 }
 
-#filterForm {
+.filterForm {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -255,15 +255,15 @@ a#button-2:hover img {
   margin-top: 50px;
 }
 
-label {
+.filterForm label {
   margin-right: 20px;
 }
 
-label:not(:first-child):not(:last-child){
+.filterForm label:not(:first-child):not(:last-child){
   margin-left: 20px;
 }
 
-select, input {
+.filterForm select, input {
   padding: 5px;
   border: 1px solid #C5C5C5;
   border-radius: 3px;
@@ -271,16 +271,16 @@ select, input {
   color: white;
 }
 
-select {
+.filterForm select {
   width: 100px;
   color: black;
 }
 
-input {
+#filterForm input {
   width: 80px;
 }
 
-input::placeholder {
+#filterForm input::placeholder {
   color: black;
 }
 
@@ -967,4 +967,8 @@ input[type=submit]:hover {
   background: none;
   position: absolute;
   left: 90%;
+}
+
+.flatpickr-calendar{
+  position: fixed;
 }
