@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
   carList.addEventListener('click', function (event) {
     const target = event.target;
 
-    // Проверяем, была ли нажата кнопка "carbutton" или текст "ZAREZERWUJ"
     if (target.classList.contains('carbutton') || (target.classList.contains('deleteCar') && target.textContent === 'ZAREZERWUJ')) {
       const carElement = target.closest('.car');
       const carId = target.getAttribute('data-car-id');
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const brand = carElement.querySelector('.brand').textContent;
       const model = carElement.querySelector('.model').textContent;
 
-      // Проверяем, существует ли уже блок с классом "reservation"
       if (!document.querySelector('.reservation')) {
         showReservationInfo(imageUrl, brand, model);
       }
@@ -20,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function showReservationInfo(imageUrl, brand, model) {
-    // Создаем блок для отображения информации о машине
     const reservationDiv = document.createElement('div');
     reservationDiv.classList.add('reservation');
 
@@ -48,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </div>
           <div class="promo_reservation">
             <div class="kod_reservation"><p>Kod promocyjny</p></div>
-            <div class="kod_reservation1"><p>Wpisz...</p></div>
+            <div class="kod_reservation1"><input type="text" class="kod_reservation_text" placeholder="Wpisz..." maxlength="8"></div>      
           </div>
 
           <div class="price_reservation">
@@ -64,55 +61,120 @@ document.addEventListener("DOMContentLoaded", function () {
           <button class="close-button"><img class="close_button"src="https://fra1.digitaloceanspaces.com/carrentbucket/static/icon%20_cancel.svg"></button>
         </div>
       `;
+    document.body.appendChild(reservationDiv);
 
-      document.body.appendChild(reservationDiv);
+    const startDatePicker = reservationDiv.querySelector('.start_date_reservation1');
+    const endDatePicker = reservationDiv.querySelector('.end_date_reservation1');
 
-      // Находим элемент с классом "flatpickr-calendar"
-      const startDatePicker = reservationDiv.querySelector('.start_date_reservation1');
-      
-      // Инициализируем flatpickr
-      const fp = flatpickr(startDatePicker, {
-        enableTime: false,
-        dateFormat: "Y-m-d",
-        locale: {
-          firstDayOfWeek: 1,
-          months: {
-            shorthand: ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
-            longhand: [
-              "Styczeń",
-              "Luty",
-              "Marzec",
-              "Kwiecień",
-              "Maj",
-              "Czerwiec",
-              "Lipiec",
-              "Sierpień",
-              "Wrzesień",
-              "Październik",
-              "Listopad",
-              "Grudzień"
-            ],
-          },
-          weekdays: {
-            shorthand: ["Nie", "Pon", "Wto", "Śro", "Czw", "Pią", "Sob"],
-            longhand: [
-              "Niedziela",
-              "Poniedziałek",
-              "Wtorek",
-              "Środa",
-              "Czwartek",
-              "Piątek",
-              "Sobota"
-            ],
-          },
+    const fpStart = flatpickr(startDatePicker, {
+      enableTime: false,
+      dateFormat: "Y-m-d",
+      minDate: "today",  // Ограничение для выбора только сегодняшней даты и позднее
+      locale: {
+        firstDayOfWeek: 1,
+        months: {
+          shorthand: ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
+          longhand: [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+          ],
         },
-      });
-  
-      // Добавляем обработчик события для кнопки закрытия
-      const closeButton = reservationDiv.querySelector('.close-button');
-      closeButton.addEventListener('click', () => {
-        // Удаляем блок при нажатии на кнопку закрытия
-        document.body.removeChild(reservationDiv);
-      });
+        weekdays: {
+          shorthand: ["Nie", "Pon", "Wto", "Śro", "Czw", "Pią", "Sob"],
+          longhand: [
+            "Niedziela",
+            "Poniedziałek",
+            "Wtorek",
+            "Środa",
+            "Czwartek",
+            "Piątek",
+            "Sobota"
+          ],
+        },
+      },
+      onClose: function (_, dateStr) {
+        updateStartDateText(startDatePicker, dateStr);
+        const selectedStartDate = fpStart.selectedDates[0];
+
+        // Если выбрана дата в startDatePicker, устанавливаем ее в качестве минимальной для endDatePicker
+        if (selectedStartDate) {
+          fpEnd.set("minDate", selectedStartDate);
+        }
+      }
+    });
+
+    const fpEnd = flatpickr(endDatePicker, {
+      enableTime: false,
+      dateFormat: "Y-m-d",
+      minDate: "today",  // Ограничение для выбора только сегодняшней даты и позднее
+      locale: {
+        firstDayOfWeek: 1,
+        months: {
+          shorthand: ["Sty", "Lut", "Mar", "Kwi", "Maj", "Cze", "Lip", "Sie", "Wrz", "Paź", "Lis", "Gru"],
+          longhand: [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+          ],
+        },
+        weekdays: {
+          shorthand: ["Nie", "Pon", "Wto", "Śro", "Czw", "Pią", "Sob"],
+          longhand: [
+            "Niedziela",
+            "Poniedziałek",
+            "Wtorek",
+            "Środa",
+            "Czwartek",
+            "Piątek",
+            "Sobota"
+          ],
+        },
+      },
+      onClose: function (_, dateStr) {
+        updateEndDateText(endDatePicker, dateStr);
+
+        // Получаем массив выбранных дат для endDatePicker
+        const selectedEndDate = fpEnd.selectedDates[0];
+
+        // Если выбрана дата в endDatePicker, устанавливаем ее в качестве максимальной для startDatePicker
+        if (selectedEndDate) {
+          fpStart.set("maxDate", selectedEndDate);
+        }
+      }
+    });
+
+    function updateStartDateText(element, dateStr) {
+      element.textContent = dateStr || "WYBIERZ";
     }
-  });
+
+    function updateEndDateText(element, dateStr) {
+      element.textContent = dateStr || "WYBIERZ";
+    }
+
+    // Добавляем обработчик события для кнопки закрытия
+    const closeButton = reservationDiv.querySelector('.close-button');
+    closeButton.addEventListener('click', () => {
+      // Удаляем блок при нажатии на кнопку закрытия
+      document.body.removeChild(reservationDiv);
+    });
+  }
+});

@@ -182,7 +182,8 @@ a {
 
 /* Button Styles */
 
-.editCar, .addbutton {
+.editCar,
+.addbutton {
   display: inline-flex;
   height: 40px;
   width: 150px;
@@ -259,11 +260,12 @@ a#button-2:hover img {
   margin-right: 20px;
 }
 
-.filterForm label:not(:first-child):not(:last-child){
+.filterForm label:not(:first-child):not(:last-child) {
   margin-left: 20px;
 }
 
-.filterForm select, input {
+.filterForm select,
+input {
   padding: 5px;
   border: 1px solid #C5C5C5;
   border-radius: 3px;
@@ -400,7 +402,7 @@ a#button-2:hover img {
   align-items: center;
 }
 
-.deleteCar{
+.deleteCar {
   font-weight: 400;
   font-size: 15px;
 }
@@ -419,26 +421,29 @@ a#button-2:hover img {
   z-index: 1000;
 }
 
-.reservation_container{
+.reservation_container {
   display: flex;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.carimgg_reservation{
+.carimgg_reservation {
   width: 230px;
   margin-top: 5px;
   height: 150px;
 }
 
-.brandmodel{
+.brandmodel {
   display: flex;
   justify-content: center;
   margin: 0 20px 25px 20px;
 }
 
-.reserv_part1,.reserv_part2,.reserv_loyal,.promo_reservation{
+.reserv_part1,
+.reserv_part2,
+.reserv_loyal,
+.promo_reservation {
   width: 90%;
   height: 8vh;
   display: flex;
@@ -446,7 +451,10 @@ a#button-2:hover img {
   margin-top: 10px;
 }
 
-.start_date_reservation,.end_date_reservation,.level_reservation,.kod_reservation{
+.start_date_reservation,
+.end_date_reservation,
+.level_reservation,
+.kod_reservation {
   width: 40%;
   height: 100%;
   background-color: #F0F0F0;
@@ -455,7 +463,9 @@ a#button-2:hover img {
   justify-content: center;
 }
 
-.start_date_reservation1,.end_date_reservation1,.kod_reservation1{
+.start_date_reservation1,
+.end_date_reservation1,
+.kod_reservation1 {
   width: 60%;
   height: 100%;
   background-color: #D9D9D9;
@@ -465,7 +475,7 @@ a#button-2:hover img {
 }
 
 
-.level_reservation1{
+.level_reservation1 {
   width: 60%;
   height: 100%;
   background-color: #D9D9D9;
@@ -475,7 +485,17 @@ a#button-2:hover img {
   color: #D50000;
 }
 
-.price_reservation_text{
+.kod_reservation1 input {
+  background: none;
+  border: 0px;
+  text-align: center;
+  /* Выравнивание текста по центру */
+  outline: none;
+  /* Убирает обводку при фокусе */
+}
+
+
+.price_reservation_text {
   width: 40%;
   height: 100%;
   display: flex;
@@ -484,13 +504,13 @@ a#button-2:hover img {
   background-color: #fff;
 }
 
-.price_reservation1{
+.price_reservation1 {
   width: 60%;
   height: 100%;
   display: flex;
 }
 
-.price_r{
+.price_r {
   width: 50%;
   height: 100%;
   display: flex;
@@ -498,7 +518,7 @@ a#button-2:hover img {
   align-items: center;
 }
 
-.price_button{
+.price_button {
   width: 50%;
   height: 100%;
   display: flex;
@@ -508,7 +528,7 @@ a#button-2:hover img {
   color: white;
 }
 
-.price_reservation{
+.price_reservation {
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   width: 90%;
   height: 8vh;
@@ -528,6 +548,7 @@ a#button-2:hover img {
   justify-content: center;
   align-items: center;
 }
+
 /* wremenno  */
 
 input[type=text],
@@ -537,7 +558,6 @@ input[type=number] {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -699,7 +719,7 @@ input[type=submit]:hover {
 /* Yauhen  */
 
 
-input[type=text],
+.form_login input[type=text],
 select,
 input[type=number],
 input[type=password] {
@@ -838,7 +858,8 @@ input[type=submit]:hover {
 .donut_div {
   position: relative;
   width: 100%;
-  height: 100%; /* Добавим высоту для родительского элемента .donut_div */
+  height: 100%;
+  /* Добавим высоту для родительского элемента .donut_div */
 
 }
 
@@ -850,17 +871,18 @@ input[type=submit]:hover {
   left: 0;
 }
 
-#arrow{
+#arrow {
   width: 150px;
-  transition: transform 1s linear; /* Добавим анимацию для плавности поворота */
+  transition: transform 1s linear;
+  /* Добавим анимацию для плавности поворота */
 }
 
-.arrow_div{
+.arrow_div {
   position: absolute;
   margin-right: 145px;
 }
 
-#bubble{
+#bubble {
   width: 100%;
 }
 
@@ -872,16 +894,18 @@ input[type=submit]:hover {
 
 .unit {
   stroke-width: 6.9;
-  fill: none; 
+  fill: none;
   stroke-dasharray: 10 100;
   stroke-dashoffset: 20;
-  transition: stroke 0.3s ease, opacity 0.5s ease; /* Добавлено свойство для анимации появления */
-  opacity: 0; /* Начальное значение непрозрачности */
+  transition: stroke 0.3s ease, opacity 0.5s ease;
+  /* Добавлено свойство для анимации появления */
+  opacity: 0;
+  /* Начальное значение непрозрачности */
   cursor: pointer;
-  
+
   animation-name: render;
   animation-duration: 1.5s;
-  transition-property: all; 
+  transition-property: all;
   transition-duration: 1.5s;
 }
 
@@ -894,7 +918,7 @@ input[type=submit]:hover {
 }
 
 .unit:nth-child(3) {
-  stroke: #D45656  ;
+  stroke: #D45656;
   stroke-dasharray: 10 100;
   stroke-dashoffset: 30;
   animation: appear 0.5s linear 2s forwards;
@@ -903,7 +927,7 @@ input[type=submit]:hover {
 
 .unit:nth-child(4) {
   stroke: #F58383;
-  stroke-dasharray: 10  100;
+  stroke-dasharray: 10 100;
   stroke-dashoffset: 40;
   animation: appear 0.5s linear 1.5s forwards;
 
@@ -918,7 +942,7 @@ input[type=submit]:hover {
 }
 
 .unit:nth-child(6) {
-  stroke: #FFE5E5  ;
+  stroke: #FFE5E5;
   stroke-dasharray: 10 100;
   stroke-dashoffset: 60;
   animation: appear 0.5s linear 0.5s forwards;
@@ -930,7 +954,7 @@ input[type=submit]:hover {
   }
 }
 
-.level_text{
+.level_text {
   position: absolute;
   margin-top: 230px;
   flex-direction: column;
@@ -939,36 +963,130 @@ input[type=submit]:hover {
   text-transform: uppercase;
   width: 576px;
   height: 140px;
-  justify-content:center;
+  justify-content: center;
   border-radius: 20px;
 }
 
-.level_description,.additional_description ,.data-third-description , .data-last-description{
+.level_description,
+.additional_description,
+.data-third-description,
+.data-last-description {
   text-transform: uppercase;
   margin-top: 10px;
 }
 
-.level_description ,.level{
+.level_description,
+.level {
   font-weight: bold;
   font-size: 15px;
 }
 
-.additional_description,.data-third-description,.data-last-description{
+.additional_description,
+.data-third-description,
+.data-last-description {
   font-size: 15px;
-  font-weight:normal;
+  font-weight: normal;
 }
 
-.close_button{
+.close_button {
   height: 27px;
 }
 
-.close-button{
+.close-button {
   border: none;
   background: none;
   position: absolute;
   left: 90%;
 }
 
-.flatpickr-calendar{
+.flatpickr-calendar {
   position: fixed;
 }
+
+
+/* Admin panel  */
+
+.main{
+  min-height: 100vh;
+}
+
+.main_panel {
+  margin: 0 auto;
+  background: rgba(197, 197, 197, 0.30);
+  margin-top: 40px;
+}
+
+.panel {
+  height: 130px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.admin_name {
+  font-weight: 500;
+  font-size: 22px;
+}
+
+.admin_panel {
+  max-width: 1200px;
+  margin: 70px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.history h2,
+.question h2 {
+  color: #D50000;
+  font-size: 18px;
+}
+
+.history {
+  width: 45%;
+}
+
+.question {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.question_main {
+  border-radius: 10px;
+  background: rgba(217, 217, 217, 0.80);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  margin-top: 20px;
+}
+
+.table_history{
+  margin-top: 20px;
+}
+
+.question_main p{
+  margin: 7px;
+}
+
+.question_main svg{
+  margin-right: 14px;
+  margin-left: 7px;
+}
+
+.table_history{
+  width: 100%;
+  border: 9px solid #D9D9D9;
+  border-collapse: collapse;
+}
+
+.table_history tr{
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table_history th{
+  vertical-align: middle;
+}
+
