@@ -1,3 +1,5 @@
+import secrets
+
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
@@ -7,7 +9,8 @@ from django.contrib.auth.models import (
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.db import IntegrityError
-import secrets
+
+from backend.models import UserLevel
 
 
 # Create your models here.
@@ -73,6 +76,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         "self", on_delete=models.CASCADE, related_name="referrals", null=True
     )
     referral_token = models.CharField(max_length=16, unique=True)
+    loyalty_level = models.ForeignKey(
+        UserLevel, on_delete=models.CASCADE, related_name="users"
+    )
+    loyalty_score = models.IntegerField()
     objects = UserManager()
 
     def get_full_name(self):
