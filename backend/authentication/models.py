@@ -75,11 +75,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     referrer = models.ForeignKey(
         "self", on_delete=models.CASCADE, related_name="referrals", null=True
     )
-    referral_token = models.CharField(max_length=16, unique=True)
+    referral_token = models.CharField(max_length=16, unique=True, null=True)
     loyalty_level = models.ForeignKey(
         UserLevel, on_delete=models.CASCADE, related_name="users"
     )
-    loyalty_score = models.IntegerField()
+    loyalty_score = models.IntegerField(default=0)
     objects = UserManager()
 
     def get_full_name(self):
