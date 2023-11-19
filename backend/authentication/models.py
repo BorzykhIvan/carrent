@@ -6,9 +6,13 @@ from django.contrib.auth.models import (
 )
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.db import IntegrityError
+import secrets
 
 
 # Create your models here.
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None) -> "User":
         if not email:
@@ -18,6 +22,7 @@ class UserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email)
         user.set_password(password)
+        self.create_reftoken(user=user)
         user.save()
         return user
 
@@ -30,8 +35,20 @@ class UserManager(BaseUserManager):
         user.is_superuser = True
         user.is_staff = True
         user.is_active = True
+
         user.save()
         return user
+
+    def create_reftoken(self, user):
+        while True:
+            token = secrets.token_urlsafe(8)
+            try:
+                user.referral_token = token
+                user.save()
+            except IntegrityError:
+                continue
+            else:
+                break
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -52,7 +69,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         ),
     )
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
-
+    referrer = models.ForeignKey(
+        "self", on_delete=models.CASCADE, related_name="referrals", null=True
+    )
+    referral_token = models.CharField(max_length=16, unique=True)
     objects = UserManager()
 
     def get_full_name(self):

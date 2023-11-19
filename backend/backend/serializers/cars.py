@@ -8,9 +8,9 @@ from rest_framework.serializers import (
 )
 
 
-from .utils.files import upload_to_bucket
+from ..utils.files import upload_to_bucket
 
-from .models import Car, CarBrand, FuelType, TransmissionType
+from ..models import Car, CarBrand, FuelType, TransmissionType
 
 
 class CarSerializer(Serializer):
