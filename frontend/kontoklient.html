@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200&display=swap" rel="stylesheet">
+  <title>Konto Klienta</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar__wrap">
+          <div class="hamb">
+            <div class="hamb__field" id="hamb">
+              <span class="bar"></span> <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+          <a href="/" class="logo" id="logo"><img class="logoo"
+              src="https://fra1.digitaloceanspaces.com/carrentbucket/static/logo.png" alt="mazdalogo"></a>
+          <ul class="menu" id="menu">
+            <li><a href="/flota">Flota</a></li>
+            <li><a href="/map">Mapa</a></li>
+            <li><a href="#">Promocje</a></li>
+            <li><a href="#">Pomoc</a></li>
+            <li><a href="/login"><img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/login_human.svg"></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="popup" id="popup"></div>
+  </header>
+
+  <main>
+    <div class="main_panel">
+      <div class="panel">
+          <p class="admin_name">IMIE NAZWISKO</p>
+          <p class="email">mail@gmail.com</p>
+      </div>
+  </div>
+    <div class="container_klient">
+      <div class="box box-60">
+
+        <div class="aktualna_rezerwacja">
+          <p class="tekst-rezerwacja">Aktualna Rezerwacja:</p>
+          <div id="timer"></div>
+          <div class="zdj_samochodu">
+            <img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/tesla.png" class="samochod-img"
+              alt="Zdjecie samochodu">
+          </div>
+          <div class="info_samochodu">
+            <div class="scale">
+              <div class="model">Toyota Camry</div>
+              <div class="date">2023.03.10 - 2023.04.22</div>
+              <div class="status">
+                <div class="status-box green"></div>
+                <div class="status-box red"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box box-40">
+        <p class="staly_klient">Poziom stałego klienta</p>
+        <p class="poziom_description">sprawdż swoje korzyści po najechaniu myszką na poziom</p>
+        <div class="container_loyal">
+          <div class="donut_div">
+              <svg xmlns="http://www.w3.org/2000/svg" class="red-arc" viewBox="0 0 30 45" width="100%" height="100%">
+                  <circle class="unit" r="15.9" cx="50%" cy="50%" ></circle>
+                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#D50000" data-description="zarezerwowałeś ponad 30 razy w ciągu ostatnich 24 miesięcy" data-additional-description="20% rabatu na rezerwacje" data-third-description="pierwsze 5km bezpłatne na mapie przy rezerwacji na min.10km" data-last-description="bezpłatny dowolny samochód w dniu urodzin"></circle>
+                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#D45656" data-description="zarezerwowałeś ponad 20 razy w ciagu ostatnich 24 miesięcy" data-additional-description="15% rabatu na kolejne rezerwacje" data-third-description="2km bezplatne na mapie przy rezerwacji od 5km"></circle>
+                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#F58383" data-description="zarezerwowałeś ponad 10 razy w ciągu ostatnich 12 miesięcy" data-additional-description="10% rabatu na rezerwacje " data-third-description="pierwszy 1km bezplatny na mapie przy rezerwacji minimum na 2km"></circle>
+                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#FFB5B5" data-description="zarezerwowałeś ponad 3 razy w ciągu ostatnich 6 miesięcy" data-additional-description="5% rabatu na rezerwacje"></circle>
+                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#FFE5E5" data-description="Jesteś nowym klientem" data-additional-description="5% rabatu na pierwszą rezerwację"></circle>
+              </svg>
+              <image id="bubble" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Ellipse%203.svg" />
+          </div>
+          <div class="arrow_div">
+              <image id="arrow" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group%202.svg" />
+          </div>
+          <div class="level_text"><p class="level"></p><p class="level_description"></p><p class="additional_description"></p><p class="data-third-description"></p><p class="data-last-description"></p>
+          </div>
+      </div>
+      </div>
+      <div class="box box-60">
+
+        <p class="historia_wyp">Historia wypozyczeń:</p>
+
+
+        <div class="carousel" id="media">
+          <div class="carousel-inner">
+            <div class="item">
+              <div class="slide-content">
+                <div class="model">Toyota Camry</div>
+                <div class="date">2023.03.10 - 2023.04.22</div>
+                <div class="status">
+                  <div class="status-box green"></div>
+                  <div class="status-box red"></div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="thumbnail">
+                <!-- Usunięte obrazy -->
+              </div>
+              <div class="slide-content">
+                <div class="model">Honda Accord</div>
+                <div class="date">2023.03.10 - 2023.04.22</div>
+                <div class="status">
+                  <div class="status-box green"></div>
+                  <div class="status-box red"></div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="thumbnail">
+                <!-- Usunięte obrazy -->
+              </div>
+              <div class="slide-content">
+                <div class="model">Honda Accord</div>
+                <div class="date">2023.03.10 - 2023.04.22</div>
+                <div class="status">
+                  <div class="status-box green"></div>
+                  <div class="status-box red"></div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="thumbnail">
+                <!-- Usunięte obrazy -->
+              </div>
+              <div class="slide-content">
+                <div class="model">Honda Accord</div>
+                <div class="date">2023.03.10 - 2023.04.22</div>
+                <div class="status">
+                  <div class="status-box green"></div>
+                  <div class="status-box red"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Dodatkowe slajdy -->
+          </div>
+          <button class="carousel-control left" onclick="changeSlide(-1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="40" viewBox="0 0 21 40" fill="none">
+              <g filter="url(#filter0_d_208_416)">
+                <path d="M4 19.5886L16.75 4.00009V35.177L4 19.5886Z" fill="#D50000" />
+              </g>
+              <defs>
+                <filter id="filter0_d_208_416" x="0" y="0" width="20.75" height="39.177" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha" />
+                  <feOffset />
+                  <feGaussianBlur stdDeviation="2" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_208_416" />
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_208_416" result="shape" />
+                </filter>
+          </button>
+          <button class="carousel-control right" onclick="changeSlide(1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="40" viewBox="0 0 21 40" fill="none">
+              <g filter="url(#filter0_d_208_413)">
+                <path d="M16.75 19.5884L4 35.1769L4 4L16.75 19.5884Z" fill="#D50000" />
+              </g>
+              <defs>
+                <filter id="filter0_d_208_413" x="0" y="0" width="20.75" height="39.177" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha" />
+                  <feOffset />
+                  <feGaussianBlur stdDeviation="2" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_208_413" />
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_208_413" result="shape" />
+                </filter>
+              </defs>
+            </svg>
+          </button>
+        </div>
+
+
+
+
+
+      </div>
+      <div class="box box-40">
+        <p class="tekst_kodprz">twój kod dla przyjaciela</p>
+        <div class="kod_lojal">
+          <div id="copy-target">CT19ob23</div>
+          <button class="copy-button" data-clipboard-target="#copy-target">
+            <svg xmlns="http://www.w3.org/2000/svg" width="104" height="26" viewBox="0 0 104 26" fill="none">
+              <g filter="url(#filter0_d_476_10)">
+                <path
+                  d="M2 13C2 6.92487 6.92487 2 13 2H91C97.0751 2 102 6.92487 102 13C102 19.0751 97.0751 24 91 24H13C6.92487 24 2 19.0751 2 13Z"
+                  fill="white" />
+              </g>
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="black" font-size="12"
+                font-family="Arial">Kopiuj</text>
+              <defs>
+                <filter id="filter0_d_476_10" x="0" y="0" width="104" height="26" filterUnits="userSpaceOnUse"
+                  color-interpolation-filters="sRGB">
+                  <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                  <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                    result="hardAlpha" />
+                  <feOffset />
+                  <feGaussianBlur stdDeviation="1" />
+                  <feComposite in2="hardAlpha" operator="out" />
+                  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                  <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_476_10" />
+                  <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_476_10" result="shape" />
+                </filter>
+              </defs>
+            </svg>
+
+          </button>
+
+          <div class="copy-success">
+            <svg xmlns="http://www.w3.org/2000/svg" width="104" height="26" viewBox="0 0 104 26" fill="#D50000">
+              <g filter="url(#filter0_d_476_10)">
+                <path
+                  d="M2 13C2 6.92487 6.92487 2 13 2H91C97.0751 2 102 6.92487 102 13C102 19.0751 97.0751 24 91 24H13C6.92487 24 2 19.0751 2 13Z"
+                  fill="#D50000" />
+              </g>
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="12"
+                font-family="Arial">Skopiowano</text>
+            </svg>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+
+
+
+
+  <footer>
+    <div class="foter">
+      <div class="footer_logo"><img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group1.svg"
+          class="footer_img"></div>
+      <div class="footer_discription">
+        <p>Skontaktuj się z nami: <br><br>carsharing@carsharing.pl</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var clipboard = new ClipboardJS('.copy-button');
+
+    clipboard.on('success', function (e) {
+      console.log(e);
+      document.querySelector('.copy-button').classList.add('copied');
+
+      setTimeout(function () {
+        document.querySelector('.copy-button').style.display = 'none';
+        document.querySelector('.copy-success').style.display = 'block';
+      }, 100); // Schowj komunikat po 2 sekundach
+
+
+
+    });
+
+    clipboard.on('error', function (e) {
+      console.log(e);
+      alert('Błąd kopiowania');
+    });
+
+  });
+</script>
+<script src="kontoklienta_slider.js"></script>
+<script src="timer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script src="loyal.js"></script>
+</html>

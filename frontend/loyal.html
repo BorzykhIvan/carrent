@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Map</title>
+
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar__wrap">
+                    <div class="hamb">
+                        <div class="hamb__field" id="hamb">
+                            <span class="bar"></span> <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                    <a href="/" class="logo" id="logo"><img class="logoo"
+                            src="https://fra1.digitaloceanspaces.com/carrentbucket/static/logo.png" alt="mazdalogo"></a>
+                    <ul class="menu" id="menu">
+                        <li><a href="/flota">Flota</a></li>
+                        <li><a href="/map">Mapa</a></li>
+                        <li><a href="#">Promocje</a></li>
+                        <li><a href="#">Pomoc</a></li>
+                        <li><a href="/login"><img
+                                    src="https://fra1.digitaloceanspaces.com/carrentbucket/static/login_human.svg"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="popup" id="popup"></div>
+    </header>
+    <div class="container_loyal">
+        <div class="donut_div">
+            <svg xmlns="http://www.w3.org/2000/svg" class="red-arc" viewBox="0 0 30 45" width="100%" height="100%">
+                <circle class="unit" r="15.9" cx="50%" cy="50%" ></circle>
+                <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#D50000" data-description="zarezerwowałeś ponad 30 razy w ciągu ostatnich 24 miesięcy" data-additional-description="20% rabatu na rezerwacje" data-third-description="pierwsze 5km bezpłatne na mapie przy rezerwacji na min.10km" data-last-description="bezpłatny dowolny samochód w dniu urodzin"></circle>
+                <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#D45656" data-description="zarezerwowałeś ponad 20 razy w ciagu ostatnich 24 miesięcy" data-additional-description="15% rabatu na kolejne rezerwacje" data-third-description="2km bezplatne na mapie przy rezerwacji od 5km"></circle>
+                <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#F58383" data-description="zarezerwowałeś ponad 10 razy w ciągu ostatnich 12 miesięcy" data-additional-description="10% rabatu na rezerwacje " data-third-description="pierwszy 1km bezplatny na mapie przy rezerwacji minimum na 2km"></circle>
+                <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#FFB5B5" data-description="zarezerwowałeś ponad 3 razy w ciągu ostatnich 6 miesięcy" data-additional-description="5% rabatu na rezerwacje"></circle>
+                <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#FFE5E5" data-description="Jesteś nowym klientem" data-additional-description="5% rabatu na pierwszą rezerwację"></circle>
+            </svg>
+            <image id="bubble" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Ellipse%203.svg" />
+        </div>
+        <div class="arrow_div">
+            <image id="arrow" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group%202.svg" />
+        </div>
+        <div class="level_text"><p class="level"></p><p class="level_description"></p><p class="additional_description"></p><p class="data-third-description"></p><p class="data-last-description"></p>
+
+        </div>
+    </div>
+    <!-- <div id="result"></div> -->
+      
+</body>
+<script src="loyal.js"></script>
+
+</html>
+

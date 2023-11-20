@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <title>Carsharing</title>
 </head>
 
@@ -39,39 +47,39 @@
         <h1 class="banner">Szybko, łatwo, bezpiecznie - nasze auta gotowe na drogę!</h1>
         <div class="cartools">
           <div class="editbutton">
-            <a href="#" class="editCar">Usuń</a>
+            <a href="#" id="button-1" class="editCar">Usuń<img id="arrow-hover" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/busket.svg" /></a>
           </div>
           <div class="addbutton">
-            <a href="addCar.html" class="addCar">Dodaj auto</a>
+            <a href="addCar.html" id="button-2" class="addCar">Dodaj auto<img id="arrow-hover2" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/plus.svg" /></a>
           </div>
         </div>
       </div>
-      <label for="transmissionFilter">Skrzynia biegow</label>
-      <select id="transmissionFilter">
-        <option value="">All</option>
-        <option value="MANUAL">Manual</option>
-        <option value="AUTOMAT">Automat</option>
-      </select>
-
-      <label for="fuelFilter">Rodzaj paliwa</label>
-      <select id="fuelFilter">
-        <option value="">All</option>
-        <option value="PB 95">PB 95</option>
-        <option value="ON">ON</option>
-      </select>
-
-      <label for="priceMin">Min Price</label>
-      <input type="number" id="priceMin" placeholder="Min Price">
-
-      <label for="priceMax">Max Price</label>
-      <input type="number" id="priceMax" placeholder="Max Price">
-
-      <label for="taxiFilter">Taxi</label>
-      <input type="checkbox" id="taxiFilter">
-      <label for="eventsFilter">Events</label>
-      <input type="checkbox" id="eventsFilter">
-      <label for="racetrackFilter">Racetrack</label>
-      <input type="checkbox" id="racetrackFilter">
+      <form class="filterForm">
+        <label for="transmissionFilter">Skrzynia biegow</label>
+        <select id="transmissionFilter" name="transmission">
+          <option value="">Wszystkie</option>
+          <option value="MANUAL">Manual</option>
+          <option value="AUTOMAT">Automat</option>
+        </select>
+      
+        <label for="fuelFilter">Rodzaj paliwa</label>
+        <select id="fuelFilter" name="fuel">
+          <option value="">Wszystkie</option>
+          <option value="PB 95">PB 95</option>
+          <option value="PB 98">PB 98</option>
+          <option value="ON">ON</option>
+          <option value="ELECTRIC">ELEKTRYK</option>
+        </select>
+      
+        <label for="priceMin">Minimalna cena</label>
+        <input type="number" id="priceMin" name="minPrice" placeholder="Minimalna cena">
+      
+        <label for="priceMax">Maksymalna cena</label>
+        <input type="number" id="priceMax" name="maxPrice" placeholder="Maksymalna cena">
+      
+  
+        </form>
+      
       <div id="carList">
       </div>
     </div>
@@ -87,5 +95,6 @@
 </body>
 <script src="carsharing.js"></script>
 <script src="filtr.js"></script>
-
+<script src="reservation.js"></script>
 </html>
+
