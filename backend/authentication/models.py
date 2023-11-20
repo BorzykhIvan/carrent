@@ -17,24 +17,26 @@ from backend.models import UserLevel
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None) -> "User":
+    def create_user(self, email, first_name, last_name, password=None) -> "User":
         if not email:
             raise ValueError("An email is required.")
         if not password:
             raise ValueError("A password is required.")
         email = self.normalize_email(email)
-        user = self.model(email=email)
+        user = self.model(email=email, first_name=first_name, last_name=last_name)
         user.set_password(password)
         self.create_reftoken(user=user)
         user.save()
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, email, password, first_name, last_name):
         if not email:
             raise ValueError("An email is required.")
         if not password:
             raise ValueError("A password is required.")
-        user = self.create_user(email, password)
+        user = self.create_user(
+            email=email, password=password, first_name=first_name, last_name=last_name
+        )
         user.is_superuser = True
         user.is_staff = True
         user.is_active = True
@@ -56,8 +58,8 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
+    first_name = models.CharField(_("first name"), max_length=150)
+    last_name = models.CharField(_("last name"), max_length=150)
     is_staff = models.BooleanField(
         _("staff status"),
         default=False,
@@ -92,4 +94,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["first_name", "last_name"]
