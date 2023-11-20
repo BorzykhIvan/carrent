@@ -65,3 +65,37 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+  // Функция для отправки POST-запроса
+  function sendPostRequest() {
+    // Создаем объект с данными для отправки
+    var data = {
+        "token": "string"
+    };
+
+    // Преобразуем объект в JSON строку
+    var jsonData = JSON.stringify(data);
+
+    // Отправляем POST-запрос с использованием Fetch API
+    fetch('https://carrent-w2et2.ondigitalocean.app/api/referral/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '6ZCxr7RZbpZkreMr40aThSr9CNDORR8EEDgbXly51iZFd4mHbPhpdwmsY6L5P4om'
+        },
+        body: jsonData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Выводим результат на странице
+        document.getElementById('result').innerHTML = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('result').innerHTML = 'Произошла ошибка при отправке POST-запроса.';
+    });
+}
+
+// Вызываем функцию при загрузке страницы
+sendPostRequest();
