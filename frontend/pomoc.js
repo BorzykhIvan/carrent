@@ -3,8 +3,7 @@ const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 
 const BOT_MSGS = [
-  "hello ",
-  
+  "Zaczekaj na odpowiedz jednego z naszych operatorow",
 ];
 
 
