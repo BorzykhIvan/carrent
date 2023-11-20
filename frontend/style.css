@@ -270,7 +270,6 @@ input {
   border: 1px solid #C5C5C5;
   border-radius: 3px;
   background-color: rgb(255, 255, 255);
-  color: white;
 }
 
 .filterForm select {
@@ -846,10 +845,10 @@ input[type=submit]:hover {
 /* loyal page */
 
 .container_loyal {
-  width: 600px;
-  height: 600px;
+  width: 300px;
+  height: 301px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -872,14 +871,14 @@ input[type=submit]:hover {
 }
 
 #arrow {
-  width: 150px;
+  width: 70px;
   transition: transform 1s linear;
   /* Добавим анимацию для плавности поворота */
 }
 
 .arrow_div {
   position: absolute;
-  margin-right: 145px;
+  margin-right: 70px;
 }
 
 #bubble {
@@ -898,11 +897,8 @@ input[type=submit]:hover {
   stroke-dasharray: 10 100;
   stroke-dashoffset: 20;
   transition: stroke 0.3s ease, opacity 0.5s ease;
-  /* Добавлено свойство для анимации появления */
   opacity: 0;
-  /* Начальное значение непрозрачности */
   cursor: pointer;
-
   animation-name: render;
   animation-duration: 1.5s;
   transition-property: all;
@@ -914,7 +910,6 @@ input[type=submit]:hover {
   stroke-dasharray: 10 100;
   stroke-dashoffset: 20;
   animation: appear 0.5s linear 2.5s forwards;
-
 }
 
 .unit:nth-child(3) {
@@ -956,13 +951,13 @@ input[type=submit]:hover {
 
 .level_text {
   position: absolute;
-  margin-top: 230px;
+  margin-top: 140px;
   flex-direction: column;
   align-items: center;
   display: none;
   text-transform: uppercase;
-  width: 576px;
-  height: 140px;
+  width: 300px;
+  height: 100px;
   justify-content: center;
   border-radius: 20px;
 }
@@ -973,18 +968,19 @@ input[type=submit]:hover {
 .data-last-description {
   text-transform: uppercase;
   margin-top: 10px;
+  text-align: center;
 }
 
 .level_description,
 .level {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 8px;
 }
 
 .additional_description,
 .data-third-description,
 .data-last-description {
-  font-size: 15px;
+  font-size: 8px;
   font-weight: normal;
 }
 
@@ -1003,10 +999,24 @@ input[type=submit]:hover {
   position: fixed;
 }
 
+.poziom_description {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+}
+
+.staly_klient {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
 
 /* Admin panel  */
 
-.main{
+.main {
   min-height: 100vh;
 }
 
@@ -1021,12 +1031,20 @@ input[type=submit]:hover {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .admin_name {
   font-weight: 500;
   font-size: 22px;
+}
+
+.email{
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 .admin_panel {
@@ -1062,31 +1080,347 @@ input[type=submit]:hover {
   margin-top: 20px;
 }
 
-.table_history{
+.table_history {
   margin-top: 20px;
+  border-collapse: collapse;
+  border-style: solid;
+  border: 9px solid #D9D9D9;
+  width: 100%;
 }
 
-.question_main p{
+.question_main p {
   margin: 7px;
 }
 
-.question_main svg{
+.question_main svg {
   margin-right: 14px;
   margin-left: 7px;
 }
 
-.table_history{
-  width: 100%;
-  border: 9px solid #D9D9D9;
-  border-collapse: collapse;
+.table_history thead{
+  background-color: #D9D9D9;
+  margin-bottom: 5px;
 }
 
-.table_history tr{
+.table_history tr {
   vertical-align: middle;
   text-align: center;
 }
 
-.table_history th{
+.table_history th {
   vertical-align: middle;
 }
 
+thead th{
+  height: 50px;
+}
+
+tbody td{
+  height: 30px;
+  vertical-align: middle;
+}
+
+#result {
+
+  height: 50px;
+  background-color: green;
+
+}
+
+/*-----------------------------------------------------konto klienta-------------------------------------------------------*/
+
+.container_klient {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+
+}
+
+.box {
+  box-sizing: border-box;
+
+}
+
+.box-60 {
+  width: 60%;
+  padding-bottom: 101px;
+}
+
+.box-40 {
+  width: 40%;
+}
+
+
+
+.carousel {
+
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+
+
+}
+
+.item {
+  flex: 0 0 33.33%;
+  overflow: hidden;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 200px;
+  height: 148.243px;
+  flex-shrink: 0;
+  border-radius: 21.086px;
+  background: #D9D9D9;
+
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.carousel-control {
+
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: white;
+
+  border: none;
+  background: none;
+  position: absolute;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.left {
+  left: -2px;
+}
+
+.right {
+  right: -2px;
+}
+
+.carousel-control:hover {}
+
+.slide-content {
+  text-align: center;
+  color: white;
+}
+
+.model {
+  width: 132.268px;
+  height: 16.613px;
+  flex-shrink: 0;
+  color: #000;
+
+  font-family: Poppins;
+  font-size: 11.502px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+
+}
+
+.date {
+  padding-top: 15px;
+  width: 123.323px;
+  height: 23.642px;
+  flex-shrink: 0;
+  color: #000;
+
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.status {
+  display: flex;
+}
+
+.status-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.green {
+  display: flex;
+  width: 53.674px;
+  height: 34.505px;
+  padding: 6.39px;
+  justify-content: center;
+  align-items: center;
+  gap: 6.39px;
+  flex-shrink: 0;
+  border-radius: 6.39px;
+  border: 1.278px solid #02B000;
+  background: #404040;
+}
+
+.red {
+  background-color: red;
+  border-radius: 6.39px;
+  border: 1.278px solid #B00;
+
+  background: #D50000;
+  display: flex;
+  width: 53.035px;
+  height: 34.505px;
+  padding: 6.39px;
+  justify-content: center;
+  align-items: center;
+  gap: 6.39px;
+  flex-shrink: 0;
+}
+
+
+.carousel-inner {
+  display: flex;
+  padding-right: 9%;
+
+}
+
+.item {
+  box-sizing: border-box;
+  width: calc(50% - 21px);
+  /* Ширина слайда с учетом промежутка между слайдерами */
+  margin: 0 10.5px;
+  /* Половина желаемого промежутка (21 пиксель) между слайдерами */
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  padding: 0;
+}
+
+.historia_wyp {
+  color: #D50000;
+
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  padding: 14px;
+}
+
+
+
+.aktualna_rezerwacja {
+  width: 590px;
+  height: 245px;
+  flex-shrink: 0;
+  border-radius: 33px;
+  background: #D9D9D9;
+  display: flex;
+  flex-wrap: wrap;
+  color: #D50000;
+}
+
+
+
+.tekst-rezerwacja,
+#timer {
+
+
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+  padding-top: 19px;
+  text-align: center;
+  /* Выравнивание текста по центру */
+  height: 49px;
+  width: 50%;
+}
+
+#timer {
+  color: black;
+
+}
+
+.zdj_samochodu {
+  width: 60%;
+  height: 250px;
+  text-align: center;
+
+}
+
+.info_samochodu {
+  width: 40%;
+  height: 177px;
+}
+
+.samochod-img {
+  /* Установите максимальную ширину для изображения, чтобы она не превышала ширину своего контейнера */
+  max-width: 100%;
+  max-height: 180px;
+}
+
+.scale {
+  transform: scale(1.5);
+  /* Измените значение масштаба по вашему усмотрению */
+  transform-origin: top left;
+  /* Выберите точку начала масштабирования (в данном случае, верхний левый угол) */
+
+}
+
+.tekst_kodprz {
+  color: #000;
+
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.kod_lojal {
+  width: 268px;
+  height: 119px;
+  flex-shrink: 0;
+  border-radius: 25px;
+  background: #FFF;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin: 10% 10% 0% 20%;
+}
+
+#copy-target {
+  padding-top: 30px;
+}
+
+.copy-button,
+.copy-success {
+  border: none;
+  background: none;
+  padding-top: 22px;
+  cursor: pointer;
+}
+
+.copy-success {
+  display: none;
+}
