@@ -77,7 +77,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
     referral_token = models.CharField(max_length=16, unique=True, null=True)
     loyalty_level = models.ForeignKey(
-        UserLevel, on_delete=models.CASCADE, related_name="users"
+        UserLevel, on_delete=models.CASCADE, related_name="users", default=1
     )
     loyalty_score = models.IntegerField(default=0)
     objects = UserManager()
