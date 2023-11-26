@@ -31,7 +31,7 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     };
 
     // Отправляем данные на сервер
-    fetch('https://carrent-w2et2.ondigitalocean.app/auth/signup/', {
+    fetch('https://carrent-w2et2.ondigitalocean.app/auth/users/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
