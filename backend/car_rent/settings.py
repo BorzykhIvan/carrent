@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     "djoser",
     "authentication.apps.AuthenticationConfig",
     "backend.apps.BackendConfig",
-    "drf_yasg",
     "corsheaders",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -164,5 +164,13 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",
-    ]
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Car Rent API",
+    "DESCRIPTION": "Car Rent project for The Opole University of Tehcnology",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }
