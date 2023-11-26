@@ -31,7 +31,7 @@ class OrderView(APIView):
 
     @extend_schema(
         description="Reservate a car",
-        parameters=[OrderSerializer],
+        request=OrderSerializer,
         responses={
             200: OpenApiResponse(
                 description="Rent has been reserved successfully",
