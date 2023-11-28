@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function sendReservationData(start_date, end_date, car_id) {
-  const baseUrl = 'https://carrent-w2et2.ondigitalocean.app/api/calculator/';
+  const baseUrl = 'https://carrent-w2et2.ondigitalocean.app/api/order/';
   const url = new URL(baseUrl);
 
   // Добавляем параметры запроса к URL
