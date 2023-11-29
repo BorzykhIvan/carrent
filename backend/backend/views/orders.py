@@ -1,6 +1,10 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import serializers
+from rest_framework.views import APIView
+from rest_framework.viewsets import ViewSet
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
+
 from drf_spectacular.utils import (
     extend_schema,
     OpenApiResponse,
@@ -8,9 +12,10 @@ from drf_spectacular.utils import (
 )
 from ..serializers import OrderSerializer
 from ..utils.order import get_occupied_slots
+from ..models import Order
 
 
-class OrderView(APIView):
+class OrderView(ViewSet):
     @extend_schema(
         description="Calculate cost of rent",
         parameters=[OrderSerializer],
@@ -23,7 +28,7 @@ class OrderView(APIView):
             )
         },
     )
-    def get(self, request):
+    def list(self, request):
         serializer = OrderSerializer(data=request.GET)
         serializer.is_valid(raise_exception=True)
         price = serializer.calculate_price(user=request.user)
@@ -45,11 +50,23 @@ class OrderView(APIView):
             ),
         },
     )
-    def post(self, request):
+    def create(self, request):
         serializer = OrderSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save(user=request.user)
         return Response(serializer.data)
+
+    @extend_schema(responses=OrderSerializer(many=True))
+    @action(detail=False, methods=["get"])
+    def history(self, request):
+        orders = Order.objects.filter(user=request.user).all()
+        serializer = OrderSerializer(instance=orders, many=True)
+        return Response(serializer.data)
+
+    def get_permissions(self):
+        if self.action == "list":
+            return []
+        return [IsAuthenticated()]
 
 
 class ReservationView(APIView):
