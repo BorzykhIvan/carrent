@@ -5,27 +5,22 @@ from django.db.models import Q
 from ..models import Order, Car
 
 
-def get_occupied_slots(car_id: int) -> list[dict[str, date]]:
+def get_occupied_slots(car_id: int) -> list[Order]:
     today = date.today()
     orders = Order.objects.filter(
         Q(start_date__lte=today, end_date__gte=today) | Q(start_date__gte=today),
         car_id=car_id,
-    )
-    occupied_days = [
-        {"start_date": order.start_date, "end_date": order.end_date} for order in orders
-    ]
-    return occupied_days
+    ).all()
+    return orders
 
 
 def is_car_available(car_id: int, start_date, end_date):
-    occupied_dates = get_occupied_slots(car_id)
-    for occupied_dict in occupied_dates:
-        occupied_start = occupied_dict["start_date"]
-        occupied_end = occupied_dict["end_date"]
+    orders = get_occupied_slots(car_id)
+    for order in orders:
         if (
-            (occupied_start <= start_date <= occupied_end)
-            or (occupied_start <= end_date <= occupied_end)
-            or (start_date <= occupied_end <= end_date)
+            (order.start_date <= start_date <= order.end_date)
+            or (order.start_date <= end_date <= order.end_date)
+            or (start_date <= order.end_date <= end_date)
         ):
             return False
     return True

@@ -6,7 +6,7 @@ from drf_spectacular.utils import (
     OpenApiResponse,
     inline_serializer,
 )
-from ..serializers import OrderSerializer, ReservationSerializer
+from ..serializers import OrderSerializer
 from ..utils.order import get_occupied_slots
 
 
@@ -55,10 +55,9 @@ class OrderView(APIView):
 class ReservationView(APIView):
     @extend_schema(
         description="List of all occupied rents",
-        responses={200: OpenApiResponse(response=ReservationSerializer(many=True))},
+        responses={200: OpenApiResponse(response=OrderSerializer(many=True))},
     )
     def get(self, request, car_id):
         occupied = get_occupied_slots(car_id=car_id)
-        serializer = ReservationSerializer(data=occupied, many=True)
-        serializer.is_valid(raise_exception=True)
+        serializer = OrderSerializer(instance=occupied, many=True)
         return Response(serializer.data)
