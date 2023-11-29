@@ -20,12 +20,12 @@ def get_occupied_slots(car_id: int) -> list[dict[str, date]]:
 def is_car_available(car_id: int, start_date, end_date):
     occupied_dates = get_occupied_slots(car_id)
     for occupied_dict in occupied_dates:
-        occupied_start = occupied_dict["occupied_start"]
-        occupied_end = occupied_dict["occupied_end"]
+        occupied_start = occupied_dict["start_date"]
+        occupied_end = occupied_dict["end_date"]
         if (
             (occupied_start <= start_date <= occupied_end)
             or (occupied_start <= end_date <= occupied_end)
-            or (start_date <= occupied_end and end_date >= occupied_end)
+            or (start_date <= occupied_end <= end_date)
         ):
             return False
     return True
