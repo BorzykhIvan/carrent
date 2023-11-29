@@ -29,7 +29,7 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_superuser(self, email, password, first_name, last_name):
+    def create_superuser(self, email, password, first_name, last_name) -> "User":
         if not email:
             raise ValueError("An email is required.")
         if not password:
@@ -44,7 +44,7 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_reftoken(self, user):
+    def create_reftoken(self, user: "User"):
         while True:
             token = secrets.token_urlsafe(8)
             try:
@@ -84,11 +84,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     loyalty_score = models.IntegerField(default=0)
     objects = UserManager()
 
-    def get_full_name(self):
+    def get_full_name(self) -> str:
         full_name = f"{self.first_name} {self.last_name}"
         return full_name.strip()
 
-    def get_short_name(self):
+    def get_short_name(self) -> str:
         """Return the short name for the user."""
         return self.first_name
 
