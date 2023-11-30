@@ -20,14 +20,15 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     const data = {
         first_name: name,
         last_name: surname,
-        adres: adres,
+        address: {
+            city: miasto,
+            street: adres,
+            zip_code: kod,
+            building: mieszkanie
+        },
         email: email,
-        city: miasto,
-        postal: kod,
-        apartment: mieszkanie,
         phone_number: numertel,
         password: password
-
     };
 
     // Отправляем данные на сервер
