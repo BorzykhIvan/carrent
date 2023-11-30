@@ -174,3 +174,10 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
+
+DJOSER = {
+    "SERIALIZERS": {
+        "current_user": "authentication.serializers.UserSerializer",
+        "user_create": "authentication.serializers.UserSerializer",
+    },
+}

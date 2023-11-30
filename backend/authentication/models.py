@@ -17,13 +17,20 @@ from backend.models import UserLevel
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, first_name, last_name, password=None) -> "User":
+    def create_user(
+        self, email, first_name, last_name, phone_number, password=None
+    ) -> "User":
         if not email:
             raise ValueError("An email is required.")
         if not password:
             raise ValueError("A password is required.")
         email = self.normalize_email(email)
-        user = self.model(email=email, first_name=first_name, last_name=last_name)
+        user = self.model(
+            email=email,
+            first_name=first_name,
+            last_name=last_name,
+            phone_number=phone_number,
+        )
         user.set_password(password)
         self.create_reftoken(user=user)
         user.save()
@@ -82,6 +89,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         UserLevel, on_delete=models.CASCADE, related_name="users", default=1
     )
     loyalty_score = models.IntegerField(default=0)
+    phone_number = models.CharField(max_length=15)
     objects = UserManager()
 
     def get_full_name(self) -> str:
@@ -95,3 +103,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["first_name", "last_name"]
+
+
+class UserAddress(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    user = models.OneToOneField(User, related_name="address", on_delete=models.CASCADE)
+    zip_code = models.CharField(max_length=10)
+    city = models.CharField(max_length=64)
+    street = models.CharField(max_length=64)
+    building = models.IntegerField()
