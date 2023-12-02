@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   const carList = document.getElementById('carList');
   let selectedCarId;
 
@@ -7,21 +7,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (target.classList.contains('carbutton') || (target.classList.contains('deleteCar') && target.textContent === 'ZAREZERWUJ')) {
       const carElement = target.closest('.car');
-      selectedCarId = target.getAttribute('data-car-id'); // сохраняем carId в переменной selectedCarId
-      const imageUrl = carElement.querySelector('.carimgg').getAttribute('src');
-      const brand = carElement.querySelector('.brand').textContent;
-      const model = carElement.querySelector('.model').textContent;
+      selectedCarId = target.getAttribute('data-car-id');
 
-      if (!document.querySelector('.reservation')) {
-        showReservationInfo(imageUrl, brand, model);
-      }
+      // Получаем данные о бронировании для выбранного car_id
+      fetchReservationData(selectedCarId)
+        .then(reservationData => {
+          console.log('Полученные данные о бронировании:', reservationData);
+
+          const imageUrl = carElement.querySelector('.carimgg').getAttribute('src');
+          const brand = carElement.querySelector('.brand').textContent;
+          const model = carElement.querySelector('.model').textContent;
+
+          if (!document.querySelector('.reservation')) {
+            showReservationInfo(imageUrl, brand, model, reservationData);
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка при получении данных о бронировании:', error);
+        });
     }
   });
+  
+  async function fetchReservationData(carId) {
+    const reservationUrl = `https://carrent-w2et2.ondigitalocean.app/api/reservations/${carId}/`;
 
-  function showReservationInfo(imageUrl, brand, model) {
+    try {
+      const response = await fetch(reservationUrl);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw new Error('Error fetching reservation data');
+    }
+  }
+
+  function showReservationInfo(imageUrl, brand, model,reservationData) {
     const reservationDiv = document.createElement('div');
     reservationDiv.classList.add('reservation');
-    
+
 
     reservationDiv.innerHTML = `
         <div class="reservation_container">
@@ -64,24 +86,60 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       `;
     document.body.appendChild(reservationDiv);
-    
+
     const priceButton = reservationDiv.querySelector('.price_button');
     if (priceButton) {
       priceButton.addEventListener('click', () => {
         const startDate = fpStart.selectedDates[0].toISOString().split('T')[0];
         const endDate = fpEnd.selectedDates[0].toISOString().split('T')[0];
-  
+        const adjustedStartDate = new Date(startDate);
+        adjustedStartDate.setDate(adjustedStartDate.getDate() + 1);
+
+        const adjustedEndDate = new Date(endDate);
+        adjustedEndDate.setDate(adjustedEndDate.getDate() + 1);
+
+        const formattedStartDate = adjustedStartDate.toISOString().split('T')[0];
+        const formattedEndDate = adjustedEndDate.toISOString().split('T')[0];
+
         // Вызываем функцию для отправки данных на бекенд
-        sendReservationData(startDate, endDate, selectedCarId); // используем selectedCarId
+        sendReservationData(formattedStartDate, formattedEndDate, selectedCarId);
       });
     }
+
+
+    const carButtonReservation = reservationDiv.querySelector('.carbutton_reservation');
+    carButtonReservation.addEventListener('click', () => {
+      const startDate = fpStart.selectedDates[0].toISOString().split('T')[0];
+      const endDate = fpEnd.selectedDates[0].toISOString().split('T')[0];
+
+      const adjustedStartDate = new Date(startDate);
+      adjustedStartDate.setDate(adjustedStartDate.getDate() + 1);
+
+      const adjustedEndDate = new Date(endDate);
+      adjustedEndDate.setDate(adjustedEndDate.getDate() + 1);
+
+      const formattedStartDate = adjustedStartDate.toISOString().split('T')[0];
+      const formattedEndDate = adjustedEndDate.toISOString().split('T')[0];
+
+
+      sendPostRequest(formattedStartDate, formattedEndDate, selectedCarId);
+    });
 
     const startDatePicker = reservationDiv.querySelector('.start_date_reservation1');
     const endDatePicker = reservationDiv.querySelector('.end_date_reservation1');
 
+    const blockedStartDate = reservationData.blockedStartDate;
+    const blockedEndDate = reservationData.blockedEndDate;
+
+
     const fpStart = flatpickr(startDatePicker, {
       enableTime: false,
       dateFormat: "Y-m-d",
+      disable: reservationData.map(reservation => ({
+        from: reservation.start_date,
+        to: reservation.end_date,
+      })),
+
       minDate: "today",  // Ограничение для выбора только сегодняшней даты и позднее
       locale: {
         firstDayOfWeek: 1,
@@ -129,6 +187,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const fpEnd = flatpickr(endDatePicker, {
       enableTime: false,
       dateFormat: "Y-m-d",
+      disable: reservationData.map(reservation => ({
+        from: reservation.start_date,
+        to: reservation.end_date,
+      })),
       minDate: "today",  // Ограничение для выбора только сегодняшней даты и позднее
       locale: {
         firstDayOfWeek: 1,
@@ -199,7 +261,7 @@ function sendReservationData(start_date, end_date, car_id) {
   // Добавляем параметры запроса к URL
   url.searchParams.append('start_date', start_date);
   url.searchParams.append('end_date', end_date);
-  url.searchParams.append('car', car_id);
+  url.searchParams.append('car_id', car_id);
 
   fetch(url, {
     method: 'GET',
@@ -213,19 +275,55 @@ function sendReservationData(start_date, end_date, car_id) {
       console.log('Ответ от бекенда:', data);
       // Обновите DOM или выполните другие действия с полученными данными
 
-       // Получите элемент с классом price_r
-       const priceElement = document.querySelector('.price_r');
+      // Получите элемент с классом price_r
+      const priceElement = document.querySelector('.price_r');
 
-       // Предполагая, что data.total содержит новое значение
-       const newPrice = data.total + ' ZŁ';
- 
-       // Обновите текст элемента price_r
-       priceElement.textContent = newPrice;
+      // Предполагая, что data.total содержит новое значение
+      const newPrice = data.total + ' ZŁ';
 
-       
+      // Обновите текст элемента price_r
+      priceElement.textContent = newPrice;
+
+
 
     })
     .catch(error => {
       console.error('Ошибка:', error);
     });
+}
+
+function sendPostRequest(start_date, end_date, car_id) {
+  const baseUrl = 'https://carrent-w2et2.ondigitalocean.app/api/order/';
+  const url = new URL(baseUrl);
+
+  const requestData = {
+    start_date: start_date,
+    end_date: end_date,
+    car_id: car_id
+  };
+
+  const authToken = getAuthTokenFromCookie();
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': 'Kz0N97DK68pqHJ5qGPpq6cy8UjpXJFkTRWdw7EAYg5talf5tHbikTQVYZJpvqiwO',
+      'Authorization': `Token ${authToken}`
+    },
+    body: JSON.stringify(requestData)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Odpowiedź od serwera (POST):', data);
+    })
+    .catch(error => {
+      console.error('Błąd (POST):', error);
+    });
+}
+
+function getAuthTokenFromCookie() {
+  const cookies = document.cookie.split('; ');
+  const authTokenCookie = cookies.find(cookie => cookie.startsWith('authToken='));
+  return authTokenCookie ? authTokenCookie.split('=')[1] : null;
 }
