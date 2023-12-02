@@ -43,3 +43,13 @@ class UserSerializer(serializers.ModelSerializer):
             city=city, building=building, zip_code=zip_code, street=street, user=user
         )
         return user
+
+    def update(self, instance, validated_data):
+        address_dict = validated_data.pop("address")
+        instance.address.city = address_dict.pop("city")
+        instance.address.building = address_dict.pop("building")
+        instance.address.zip_code = address_dict.pop("zip_code")
+        instance.address.street = address_dict.pop("street")
+        for field, data in validated_data.items():
+            setattr(instance, field, data)
+        return instance
