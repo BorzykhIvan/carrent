@@ -135,6 +135,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     const fpStart = flatpickr(startDatePicker, {
       enableTime: false,
       dateFormat: "Y-m-d",
+      static: true ,
+      position: "above", // "above" или "below"
       disable: reservationData.map(reservation => ({
         from: reservation.start_date,
         to: reservation.end_date,
@@ -187,6 +189,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     const fpEnd = flatpickr(endDatePicker, {
       enableTime: false,
       dateFormat: "Y-m-d",
+      static: true ,
+      position: "above", // "above" или "below"
       disable: reservationData.map(reservation => ({
         from: reservation.start_date,
         to: reservation.end_date,
