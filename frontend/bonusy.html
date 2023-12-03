@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Map</title>
+
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar__wrap">
+                    <div class="hamb">
+                        <div class="hamb__field" id="hamb">
+                            <span class="bar"></span> <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                    <a href="/" class="logo" id="logo"><img class="logoo"
+                            src="https://fra1.digitaloceanspaces.com/carrentbucket/static/logo.png" alt="mazdalogo"></a>
+                    <ul class="menu" id="menu">
+                        <li><a href="/flota">Flota</a></li>
+                        <li><a href="/map">Mapa</a></li>
+                        <li><a href="/bonusy">Promocje</a></li>
+                        <li><a href="/pomoc">Pomoc</a></li>
+                        <li id="loginLink"><a href="/login"><img
+                                    src="https://fra1.digitaloceanspaces.com/carrentbucket/static/login_human.svg"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="popup" id="popup"></div>
+    </header>
+    <main>
+        <div class="bonusyy">
+            <div class="bonus_main">
+                <h1>Sprawdż aktualne bonusy i promocje</h1>
+                <div class="bonus_content">
+                    <div class="left_bonus">
+                        <img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/tank_bonus.jpg"
+                            class="bonus_img">
+                        <p class="bonus_title">Tankowanie samochodu</p>
+                        <p>Zatankuj auto za pomocą naszej firmowej karty ponad połowę baku, wyślij zdjęcie
+                            do/po i zgarnij 30zł.</p>
+                        <button class="tank_button">TANKUJ</button>
+                    </div>
+                    <div class="right_bonus">
+                        <img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/myjnia_bonus.jpg"
+                            class="bonus_img">
+                        <p class="bonus_title">Mycie samochodu</p>
+                        <p>Umyj i odkurz samochód na własny koszt, wyślij zdjęcia do weryfikacji i dostań bonus.</p>
+                        <button class="umyj_button">UMYJ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bonus_footer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="87" viewBox="0 0 91 87" fill="none">
+                    <g clip-path="url(#clip0_561_51)">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M11.375 32.625C14.3918 32.625 17.2851 33.7708 19.4183 35.8102C21.5516 37.8497 22.75 40.6158 22.75 43.5C22.75 46.3842 21.5516 49.1503 19.4183 51.1898C17.2851 53.2292 14.3918 54.375 11.375 54.375C8.35816 54.375 5.46489 53.2292 3.33166 51.1898C1.19843 49.1503 0 46.3842 0 43.5C0 40.6158 1.19843 37.8497 3.33166 35.8102C5.46489 33.7708 8.35816 32.625 11.375 32.625ZM79.625 32.625C82.6418 32.625 85.5351 33.7708 87.6683 35.8102C89.8016 37.8497 91 40.6158 91 43.5C91 46.3842 89.8016 49.1503 87.6683 51.1898C85.5351 53.2292 82.6418 54.375 79.625 54.375C76.6082 54.375 73.7149 53.2292 71.5817 51.1898C69.4484 49.1503 68.25 46.3842 68.25 43.5C68.25 40.6158 69.4484 37.8497 71.5817 35.8102C73.7149 33.7708 76.6082 32.625 79.625 32.625ZM46.5283 32.625C49.5451 32.625 52.4384 33.7708 54.5716 35.8102C56.7049 37.8497 57.9033 40.6158 57.9033 43.5C57.9033 46.3842 56.7049 49.1503 54.5716 51.1898C52.4384 53.2292 49.5451 54.375 46.5283 54.375C43.5115 54.375 40.6182 53.2292 38.485 51.1898C36.3517 49.1503 35.1533 46.3842 35.1533 43.5C35.1533 40.6158 36.3517 37.8497 38.485 35.8102C40.6182 33.7708 43.5115 32.625 46.5283 32.625Z"
+                            fill="#D50000" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_561_51">
+                            <rect width="91" height="87" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+                <p>Za niedługo będą dostępne nowe promocje. Śledż na bieżąco!</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="foter">
+            <div class="footer_logo"><img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group1.svg"
+                    class="footer_img"></div>
+            <div class="footer_discription">
+                <p>Skontaktuj się z nami: <br><br>carsharing@carsharing.pl</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="auth.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Подключаем jQuery -->
+<script src="weryfikacja_dokumenty.js"></script>
+
+</html>
