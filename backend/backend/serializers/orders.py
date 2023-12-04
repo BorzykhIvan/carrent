@@ -2,9 +2,11 @@ from datetime import date
 from rest_framework import serializers
 from ..models import Car, Order
 from ..utils.order import is_car_available
+from .cars import CarSerializer
+from .users import UserSerializer
 
 
-class OrderSerializer(serializers.ModelSerializer):
+class CreateOrderSerializer(serializers.ModelSerializer):
     car_id = serializers.IntegerField(source="car.id")
     discount_code = serializers.CharField(max_length=8, required=False)
     user_id = serializers.IntegerField(source="user.id", read_only=True)
@@ -40,11 +42,11 @@ class OrderSerializer(serializers.ModelSerializer):
 
         return data
 
-    def calculate_price(self, user):
+    def calculate_price(self):
         days = (
             self.validated_data["end_date"] - self.validated_data["start_date"]
         ).days + 1
-
+        user = self.context["user"]
         # applying discounts
         car_inst = self.context["car_inst"]
         total_price = float(car_inst.day_price * days)
@@ -60,11 +62,13 @@ class OrderSerializer(serializers.ModelSerializer):
         return total_price
 
     def create(self, validated_data):
+        amount = self.calculate_price()
         order = Order.objects.create(
             start_date=validated_data["start_date"],
             end_date=validated_data["end_date"],
             car=self.context["car_inst"],
-            user=validated_data["user"],
+            user=self.context["user"],
+            amount=amount,
         )
         return order
 
@@ -72,3 +76,20 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ["id", "start_date", "end_date", "car_id", "discount_code", "user_id"]
         read_only_fields = ["id", "car_id", "user_id"]
+
+
+class ListOrderSerializer(serializers.ModelSerializer):
+    car = CarSerializer()
+    user = UserSerializer()
+
+    class Meta:
+        model = Order
+        fields = [
+            "id",
+            "start_date",
+            "end_date",
+            "car",
+            "discount_code",
+            "user",
+            "amount",
+        ]

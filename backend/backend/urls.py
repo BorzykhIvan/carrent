@@ -10,6 +10,7 @@ from .views import (
     AdminChatView,
     AdminMessagesView,
     ReservationView,
+    CalculatorView,
 )
 
 router = DefaultRouter()
@@ -24,4 +25,5 @@ urlpatterns = [
     path("chat/<int:id>/", AdminChatView.as_view()),
     path("messages/", AdminMessagesView.as_view()),
     path("reservations/<int:car_id>/", ReservationView.as_view()),
+    path("calculator/", CalculatorView.as_view()),
 ]

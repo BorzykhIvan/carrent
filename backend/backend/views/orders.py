@@ -3,22 +3,22 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from drf_spectacular.utils import (
     extend_schema,
     OpenApiResponse,
     inline_serializer,
 )
-from ..serializers import OrderSerializer
+from ..serializers import CreateOrderSerializer, ListOrderSerializer, DateSerializer
 from ..utils.order import get_occupied_slots
 from ..models import Order
 
 
-class OrderView(ViewSet):
+class CalculatorView(APIView):
     @extend_schema(
         description="Calculate cost of rent",
-        parameters=[OrderSerializer],
+        parameters=[CreateOrderSerializer],
         responses={
             200: OpenApiResponse(
                 description="Total price",
@@ -28,19 +28,34 @@ class OrderView(ViewSet):
             )
         },
     )
-    def list(self, request):
-        serializer = OrderSerializer(data=request.GET)
+    def get(self, request):
+        serializer = CreateOrderSerializer(
+            data=request.GET, context={"user": request.user}
+        )
         serializer.is_valid(raise_exception=True)
-        price = serializer.calculate_price(user=request.user)
+        price = serializer.calculate_price()
         return Response({"total": price})
+
+
+class OrderView(ViewSet):
+    permission_classes = [IsAuthenticated]
+
+    @extend_schema(
+        description="Get list of all your reservations",
+        responses={200: OpenApiResponse(response=ListOrderSerializer)},
+    )
+    def list(self, request):
+        orders = Order.objects.filter(user=request.user).all()
+        serializer = ListOrderSerializer(instance=orders, many=True)
+        return Response(serializer.data)
 
     @extend_schema(
         description="Reservate a car",
-        request=OrderSerializer,
+        request=CreateOrderSerializer,
         responses={
             200: OpenApiResponse(
                 description="Rent has been reserved successfully",
-                response=OrderSerializer,
+                response=CreateOrderSerializer,
             ),
             400: OpenApiResponse(
                 description="Dates has been already reserved",
@@ -51,30 +66,27 @@ class OrderView(ViewSet):
         },
     )
     def create(self, request):
-        serializer = OrderSerializer(data=request.data)
+        serializer = CreateOrderSerializer(
+            data=request.data, context={"user": request.user}
+        )
         serializer.is_valid(raise_exception=True)
-        serializer.save(user=request.user)
+        serializer.save()
         return Response(serializer.data)
 
-    @extend_schema(responses=OrderSerializer(many=True))
-    @action(detail=False, methods=["get"])
-    def history(self, request):
-        orders = Order.objects.filter(user=request.user).all()
-        serializer = OrderSerializer(instance=orders, many=True)
+    @extend_schema(responses=ListOrderSerializer(many=True))
+    @action(detail=False, methods=["get"], permission_classes=[IsAdminUser])
+    def all(self, request):
+        orders = Order.objects.all()
+        serializer = ListOrderSerializer(instance=orders, many=True)
         return Response(serializer.data)
-
-    def get_permissions(self):
-        if self.action == "list":
-            return []
-        return [IsAuthenticated()]
 
 
 class ReservationView(APIView):
     @extend_schema(
         description="List of all occupied rents",
-        responses={200: OpenApiResponse(response=OrderSerializer(many=True))},
+        responses={200: OpenApiResponse(response=DateSerializer(many=True))},
     )
     def get(self, request, car_id):
         occupied = get_occupied_slots(car_id=car_id)
-        serializer = OrderSerializer(instance=occupied, many=True)
+        serializer = DateSerializer(instance=occupied, many=True)
         return Response(serializer.data)
