@@ -5,10 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="common.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=pl_PL&amp;apikey=<0e6c7a15-1bf2-439a-8449-aabb30ff258b>" type="text/javascript"></script>
     <title>Map</title>
+    <style>
+      html, body, #map {
+            width: 100%; height: 100%; padding: 0; margin: 0; padding-top: 3vh;
+        } 
+        .description {
+            display: block;
+            color: #999;
+            font-size: 10px;
+            line-height: 17px;
+        }
 
+        a, a:visited {
+            color: #04b;
+            text-decoration: none !important;
+        }
+  </style>
 </head>
 <body>
     <header class="header">
@@ -25,7 +42,7 @@
               <ul class="menu" id="menu">
                 <li><a href="/flota">Flota</a></li>
                 <li><a href="/map">Mapa</a></li>
-                <li><a href="/bonusy">Promocje</a></li>
+                <li><a href="#">Promocje</a></li>
                 <li><a href="/pomoc">Pomoc</a></li>
                 <li id="loginLink"><a href="/login"><img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/login_human.svg"></a></li>
               </ul>
@@ -34,13 +51,10 @@
         </nav>
         <div class="popup" id="popup"></div>
       </header>
-      <div class="myframe">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d161805.7290423789!2d17.741134425814362!3d50.67884304047476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47105306456db34b%3A0x25c66487400c346e!2sOpole!5e0!3m2!1spl!2spl!4v1698725945998!5m2!1spl!2spl" 
-      width="800"  height="650" style="border:0;" allowfullscreen="" 
-      loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+      
 </div>
       
+<div class="map" id="map" ></div>
 </body>
 <script src="map.js"></script>
 <script src="auth.js"></script>
