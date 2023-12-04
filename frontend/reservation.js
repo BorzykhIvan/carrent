@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
   });
-  
+
   async function fetchReservationData(carId) {
     const reservationUrl = `https://carrent-w2et2.ondigitalocean.app/api/reservations/${carId}/`;
 
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  function showReservationInfo(imageUrl, brand, model,reservationData) {
+  function showReservationInfo(imageUrl, brand, model, reservationData) {
     const reservationDiv = document.createElement('div');
     reservationDiv.classList.add('reservation');
 
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const fpStart = flatpickr(startDatePicker, {
       enableTime: false,
       dateFormat: "Y-m-d",
-      static: true ,
+      static: true,
       position: "above", // "above" или "below"
       disable: reservationData.map(reservation => ({
         from: reservation.start_date,
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const fpEnd = flatpickr(endDatePicker, {
       enableTime: false,
       dateFormat: "Y-m-d",
-      static: true ,
+      static: true,
       position: "above", // "above" или "below"
       disable: reservationData.map(reservation => ({
         from: reservation.start_date,
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 function sendReservationData(start_date, end_date, car_id) {
-  const baseUrl = 'https://carrent-w2et2.ondigitalocean.app/api/order/';
+  const baseUrl = 'https://carrent-w2et2.ondigitalocean.app/api/calculator/';
   const url = new URL(baseUrl);
 
   // Добавляем параметры запроса к URL
