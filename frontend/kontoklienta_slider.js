@@ -17,3 +17,5 @@ let currentSlide = 1;
 
     slides.style.transform = `translateX(${-33.33 * (currentSlide - 1)}%)`;
   }
+
+  

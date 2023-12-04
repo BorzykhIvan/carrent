@@ -269,7 +269,6 @@ input {
   padding: 5px;
   border: 1px solid #C5C5C5;
   border-radius: 3px;
-  background-color: rgb(255, 255, 255);
 }
 
 .filterForm select {
@@ -462,6 +461,15 @@ input {
   justify-content: center;
 }
 
+.flatpickr-wrapper {
+  width: 60%;
+}
+
+.flatpickr-wrapper .start_date_reservation1,
+.flatpickr-wrapper .end_date_reservation1 {
+  width: 100%;
+}
+
 .start_date_reservation1,
 .end_date_reservation1,
 .kod_reservation1 {
@@ -547,6 +555,8 @@ input {
   justify-content: center;
   align-items: center;
 }
+
+.flatpickr-calendar {}
 
 /* wremenno  */
 
@@ -846,7 +856,7 @@ input[type=submit]:hover {
 
 .container_loyal {
   width: 300px;
-  height: 301px;
+  height: 303px;
   margin: 0 auto;
   margin-top: 50px;
   display: flex;
@@ -995,9 +1005,6 @@ input[type=submit]:hover {
   left: 90%;
 }
 
-.flatpickr-calendar {
-  position: fixed;
-}
 
 .poziom_description {
   text-transform: uppercase;
@@ -1022,26 +1029,32 @@ input[type=submit]:hover {
 
 .main_panel {
   margin: 0 auto;
-  background: rgba(197, 197, 197, 0.30);
+  max-width: 1200px;
   margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main_ppanel {
+  background: rgba(197, 197, 197, 0.30);
 }
 
 .panel {
   height: 130px;
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
 }
 
+.first_name,
 .admin_name {
   font-weight: 500;
   font-size: 22px;
 }
 
-.email{
+.email {
   margin-top: 20px;
   text-transform: uppercase;
   font-size: 14px;
@@ -1097,7 +1110,7 @@ input[type=submit]:hover {
   margin-left: 7px;
 }
 
-.table_history thead{
+.table_history thead {
   background-color: #D9D9D9;
   margin-bottom: 5px;
 }
@@ -1111,11 +1124,11 @@ input[type=submit]:hover {
   vertical-align: middle;
 }
 
-thead th{
+thead th {
   height: 50px;
 }
 
-tbody td{
+tbody td {
   height: 30px;
   vertical-align: middle;
 }
@@ -1211,14 +1224,12 @@ tbody td{
   right: -2px;
 }
 
-.carousel-control:hover {}
-
 .slide-content {
   text-align: center;
   color: white;
 }
 
-.model {
+.model_klient {
   width: 132.268px;
   height: 16.613px;
   flex-shrink: 0;
@@ -1423,4 +1434,187 @@ tbody td{
 
 .copy-success {
   display: none;
+}
+
+/*-----------------------------------------------------dane klienta-------------------------------------------------------*/
+
+.danne {
+  max-width: 1200px;
+  margin: 50px auto;
+  display: flex;
+}
+
+.danne h3 {
+  text-transform: uppercase;
+  color: #D50000;
+  font-weight: 500;
+}
+
+.danne p {
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+
+.right_content {
+  margin-left: 200px;
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+}
+
+.edit h3 {
+  text-transform: uppercase;
+  color: #d50000;
+  font-weight: 500;
+  margin: 0;
+  /* Уберем внешние отступы у h3 */
+}
+
+.edit .edit_danne {
+  padding: 0;
+  /* Уберем внутренние отступы у кнопки */
+  margin-left: 30px;
+  /* Добавим небольшой отступ между текстом и кнопкой */
+  background: #D9D9D9;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+}
+
+.moje_konto_link {
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+.panel_right {
+  display: flex;
+  align-items: center;
+}
+
+/*----------------------------------------------------admin_nowe_Weryfikacje------------------------------------------------------*/
+
+.admin_nowe_weryfikacje {
+  max-width: 1200px;
+  margin: 70px auto;
+  display: flex;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.weryfikacja {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(217, 217, 217, 0.80);
+  align-items: center;
+  height: 56px;
+}
+
+.dokumenty,
+.bonusy {
+  width: 49%;
+}
+
+.dokumenty h3,
+.bonusy h3 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.dokumenty p,
+.bonusy p {
+  margin-left: 10px;
+}
+
+.dokumenty button,
+.bonusy button {
+  margin-right: 10px;
+  border-radius: 10px;
+  width: 100px;
+}
+
+/*----------------------------------------------------bonusy------------------------------------------------------*/
+
+.bonusyy {
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 49%;
+}
+
+.bonus_main {
+  margin-top: 100px;
+}
+
+.bonus_main h1 {
+  text-align: center;
+  font-size: 26px;
+  color: #D50000;
+  font-weight: 500;
+  margin-bottom: 70px;
+}
+
+.bonus_content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left_bonus,
+.right_bonus {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.bonus_content p {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.bonus_title {
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.bonus_img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.tank_button,
+.umyj_button {
+  background: #D50000;
+  border-radius: 40px;
+  color: white;
+  border: none;
+  height: 40px;
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.bonus_footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.bonus_footer p {
+  color: #000;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 100px;
 }

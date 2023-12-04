@@ -66,3 +66,35 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+// Получаем токен из куки
+const cookies = document.cookie.split('; ');
+const authTokenCookie = cookies.find(cookie => cookie.startsWith('authToken='));
+const storedToken = authTokenCookie ? authTokenCookie.split('=')[1] : null;
+
+// Функция для выполнения GET-запроса с токеном
+async function fetchDataWithToken() {
+    try {
+        const response = await fetch('https://carrent-w2et2.ondigitalocean.app/api/referral/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${storedToken}`
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Не удалось получить данные из базы.');
+        }
+
+        const data = await response.json();
+
+        // Выводим только значение токена на странице
+        document.getElementById('copy-target').innerText = data.token;
+    } catch (error) {
+        console.error('Ошибка:', error);
+        document.getElementById('copy-target').innerText = 'Произошла ошибка при получении данных из базы.';
+    }
+}
+
+// Вызываем функцию при загрузке страницы
+fetchDataWithToken();

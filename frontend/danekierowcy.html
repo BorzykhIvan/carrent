@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200&display=swap" rel="stylesheet">
+    <title>Konto Klienta</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar__wrap">
+                    <div class="hamb">
+                        <div class="hamb__field" id="hamb">
+                            <span class="bar"></span> <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                    <a href="/" class="logo" id="logo"><img class="logoo"
+                            src="https://fra1.digitaloceanspaces.com/carrentbucket/static/logo.png" alt="mazdalogo"></a>
+                    <ul class="menu" id="menu">
+                        <li><a href="/flota">Flota</a></li>
+                        <li><a href="/map">Mapa</a></li>
+                        <li><a href="/bonusy">Promocje</a></li>
+                        <li><a href="/pomoc">Pomoc</a></li>
+                        <li id="loginLink"><a href="/login"><img
+                                    src="https://fra1.digitaloceanspaces.com/carrentbucket/static/login_human.svg"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="popup" id="popup"></div>
+    </header>
+
+    <main>
+        <div class="main_ppanel">
+            <div class="main_panel">
+                <div class="panel">
+                    <p class="first_name">IMIE NAZWISKO</p>
+                    <p class="email">mail@gmail.com</p>
+                </div>
+                <div class="panel_right">
+                    <img class="panel_arrow"
+                        src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Arrowkonto.svg">
+                    <a class="moje_konto_link" href="/kontoklient">moje konto</a>
+                </div>
+            </div>
+            </div>
+            <div class="danne">
+                <div class="left_content">
+                    <div class="adres">
+                        <div class="edit">
+                            <h3>Adres zamieszkania:</h3>
+                            <button class="edit_danne" onclick="editContent('address')">ZMIEŃ</button>
+                        </div>
+                        <p id="address">Opole<br> Nysy łużuckiej 7/40 <br>45-034</p>
+                    </div>
+                    <div class="numer_telefonu">
+                        <div class="edit">
+                            <h3>Numer telefonu:</h3>
+                            <button class="edit_danne" onclick="editContent('phone_number')">ZMIEŃ</button>
+                        </div>
+                        <p id="phone_number">+48 555 555 555</p>
+                    </div>
+                    <div class="pesel">
+                        <div class="edit">
+                            <h3>Numer pesel:</h3>
+                            <button class="edit_danne">ZMIEŃ</button>
+                        </div>
+                        <p>brak</p>
+                    </div>
+                    <div class="data_urodzenia">
+                        <div class="edit">
+                            <h3>Data urodzenia:</h3>
+                            <button class="edit_danne">ZMIEŃ</button>
+                        </div>
+                        <p>24.12.1999</p>
+                    </div>
+                </div>
+                <div class="right_content">
+                    <div class="dowod">
+                        <div class="edit">
+                            <h3>zdjęcie dowodu:</h3>
+                            <button class="edit_danne">ZMIEŃ</button>
+                        </div>
+                        <p>zdjecie.zpg</p>
+                    </div>
+                    <div class="waznosc_dowod">
+                        <div class="edit">
+                            <h3>data ważności dowodu:</h3>
+                            <button class="edit_danne">ZMIEŃ</button>
+                        </div>
+                        <p>24.05.2026</p>
+                    </div>
+                    <div class="wydanie_dowod">
+                        <div class="edit">
+                            <h3>data wydania dowodu:</h3>
+                            <button class="edit_danne">ZMIEŃ</button>
+                        </div>
+                        <p>24.05.2021</p>
+                    </div>
+                    <div class="taxi">
+                        <div class="edit">
+                            <h3>Dla taxi:</h3>
+                            <button class="edit_danne">ZMIEŃ</button>
+                        </div>
+                        <p>brak</p>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <footer>
+        <div class="foter">
+            <div class="footer_logo"><img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group1.svg"
+                    class="footer_img"></div>
+            <div class="footer_discription">
+                <p>Skontaktuj się z nami: <br><br>carsharing@carsharing.pl</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script src="auth.js"></script>
+<script src="danekierowcy.js"></script>
+<script src="edit_danne.js"></script>
+</html>

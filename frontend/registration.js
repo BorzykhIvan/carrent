@@ -20,18 +20,19 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     const data = {
         first_name: name,
         last_name: surname,
-        adres: adres,
+        address: {
+            city: miasto,
+            street: adres,
+            zip_code: kod,
+            building: mieszkanie
+        },
         email: email,
-        city: miasto,
-        postal: kod,
-        apartment: mieszkanie,
         phone_number: numertel,
         password: password
-
     };
 
     // Отправляем данные на сервер
-    fetch('https://carrent-w2et2.ondigitalocean.app/auth/signup/', {
+    fetch('https://carrent-w2et2.ondigitalocean.app/auth/users/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,6 +44,7 @@ document.getElementById("registrationForm").addEventListener("submit", function 
         .then(data => {
             console.log('Данные успешно отправлены на сервер:', data);
             // Здесь вы можете добавить логику обработки успешной отправки данных
+            window.location.replace("/login");
         })
         .catch(error => {
             console.error('Ошибка отправки данных на сервер:', error);

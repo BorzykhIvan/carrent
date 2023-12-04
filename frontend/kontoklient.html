@@ -31,9 +31,10 @@
           <ul class="menu" id="menu">
             <li><a href="/flota">Flota</a></li>
             <li><a href="/map">Mapa</a></li>
-            <li><a href="#">Promocje</a></li>
-            <li><a href="#">Pomoc</a></li>
-            <li><a href="/login"><img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/login_human.svg"></a></li>
+            <li><a href="/bonusy">Promocje</a></li>
+            <li><a href="/pomoc">Pomoc</a></li>
+            <li id="loginLink"><a href="/login"><img
+                  src="https://fra1.digitaloceanspaces.com/carrentbucket/static/login_human.svg"></a></li>
           </ul>
         </div>
       </div>
@@ -42,12 +43,18 @@
   </header>
 
   <main>
-    <div class="main_panel">
-      <div class="panel">
-          <p class="admin_name">IMIE NAZWISKO</p>
+    <div class="main_ppanel">
+      <div class="main_panel">
+        <div class="panel">
+          <p class="first_name">IMIE NAZWISKO</p>
           <p class="email">mail@gmail.com</p>
+        </div>
+        <div class="panel_right">
+          <img class="panel_arrow" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Arrowkonto.svg">
+          <a class="moje_konto_link" href="/danekierowcy">dane kierowcy</a>
+        </div>
       </div>
-  </div>
+    </div>
     <div class="container_klient">
       <div class="box box-60">
 
@@ -60,7 +67,7 @@
           </div>
           <div class="info_samochodu">
             <div class="scale">
-              <div class="model">Toyota Camry</div>
+              <div class="model_klient">Toyota Camry</div>
               <div class="date">2023.03.10 - 2023.04.22</div>
               <div class="status">
                 <div class="status-box green"></div>
@@ -75,22 +82,41 @@
         <p class="poziom_description">sprawdż swoje korzyści po najechaniu myszką na poziom</p>
         <div class="container_loyal">
           <div class="donut_div">
-              <svg xmlns="http://www.w3.org/2000/svg" class="red-arc" viewBox="0 0 30 45" width="100%" height="100%">
-                  <circle class="unit" r="15.9" cx="50%" cy="50%" ></circle>
-                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#D50000" data-description="zarezerwowałeś ponad 30 razy w ciągu ostatnich 24 miesięcy" data-additional-description="20% rabatu na rezerwacje" data-third-description="pierwsze 5km bezpłatne na mapie przy rezerwacji na min.10km" data-last-description="bezpłatny dowolny samochód w dniu urodzin"></circle>
-                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#D45656" data-description="zarezerwowałeś ponad 20 razy w ciagu ostatnich 24 miesięcy" data-additional-description="15% rabatu na kolejne rezerwacje" data-third-description="2km bezplatne na mapie przy rezerwacji od 5km"></circle>
-                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#F58383" data-description="zarezerwowałeś ponad 10 razy w ciągu ostatnich 12 miesięcy" data-additional-description="10% rabatu na rezerwacje " data-third-description="pierwszy 1km bezplatny na mapie przy rezerwacji minimum na 2km"></circle>
-                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#FFB5B5" data-description="zarezerwowałeś ponad 3 razy w ciągu ostatnich 6 miesięcy" data-additional-description="5% rabatu na rezerwacje"></circle>
-                  <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#FFE5E5" data-description="Jesteś nowym klientem" data-additional-description="5% rabatu na pierwszą rezerwację"></circle>
-              </svg>
-              <image id="bubble" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Ellipse%203.svg" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="red-arc" viewBox="0 0 30 45" width="100%" height="100%">
+              <circle class="unit" r="15.9" cx="50%" cy="50%"></circle>
+              <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#D50000"
+                data-description="zarezerwowałeś ponad 30 razy w ciągu ostatnich 24 miesięcy"
+                data-additional-description="20% rabatu na rezerwacje"
+                data-third-description="pierwsze 5km bezpłatne na mapie przy rezerwacji na min.10km"
+                data-last-description="bezpłatny dowolny samochód w dniu urodzin"></circle>
+              <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#D45656"
+                data-description="zarezerwowałeś ponad 20 razy w ciagu ostatnich 24 miesięcy"
+                data-additional-description="15% rabatu na kolejne rezerwacje"
+                data-third-description="2km bezplatne na mapie przy rezerwacji od 5km"></circle>
+              <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#F58383"
+                data-description="zarezerwowałeś ponad 10 razy w ciągu ostatnich 12 miesięcy"
+                data-additional-description="10% rabatu na rezerwacje "
+                data-third-description="pierwszy 1km bezplatny na mapie przy rezerwacji minimum na 2km"></circle>
+              <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#FFB5B5"
+                data-description="zarezerwowałeś ponad 3 razy w ciągu ostatnich 6 miesięcy"
+                data-additional-description="5% rabatu na rezerwacje"></circle>
+              <circle class="unit" r="15.9" cx="50%" cy="50%" data-color="#FFE5E5"
+                data-description="Jesteś nowym klientem" data-additional-description="5% rabatu na pierwszą rezerwację">
+              </circle>
+            </svg>
+            <image id="bubble" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Ellipse%203.svg" />
           </div>
           <div class="arrow_div">
-              <image id="arrow" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group%202.svg" />
+            <image id="arrow" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group%202.svg" />
           </div>
-          <div class="level_text"><p class="level"></p><p class="level_description"></p><p class="additional_description"></p><p class="data-third-description"></p><p class="data-last-description"></p>
+          <div class="level_text">
+            <p class="level"></p>
+            <p class="level_description"></p>
+            <p class="additional_description"></p>
+            <p class="data-third-description"></p>
+            <p class="data-last-description"></p>
           </div>
-      </div>
+        </div>
       </div>
       <div class="box box-60">
 
@@ -98,57 +124,7 @@
 
 
         <div class="carousel" id="media">
-          <div class="carousel-inner">
-            <div class="item">
-              <div class="slide-content">
-                <div class="model">Toyota Camry</div>
-                <div class="date">2023.03.10 - 2023.04.22</div>
-                <div class="status">
-                  <div class="status-box green"></div>
-                  <div class="status-box red"></div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumbnail">
-                <!-- Usunięte obrazy -->
-              </div>
-              <div class="slide-content">
-                <div class="model">Honda Accord</div>
-                <div class="date">2023.03.10 - 2023.04.22</div>
-                <div class="status">
-                  <div class="status-box green"></div>
-                  <div class="status-box red"></div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumbnail">
-                <!-- Usunięte obrazy -->
-              </div>
-              <div class="slide-content">
-                <div class="model">Honda Accord</div>
-                <div class="date">2023.03.10 - 2023.04.22</div>
-                <div class="status">
-                  <div class="status-box green"></div>
-                  <div class="status-box red"></div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumbnail">
-                <!-- Usunięte obrazy -->
-              </div>
-              <div class="slide-content">
-                <div class="model">Honda Accord</div>
-                <div class="date">2023.03.10 - 2023.04.22</div>
-                <div class="status">
-                  <div class="status-box green"></div>
-                  <div class="status-box red"></div>
-                </div>
-              </div>
-            </div>
-            <!-- Dodatkowe slajdy -->
+          <div class="carousel-inner" id="carousel-content">
           </div>
           <button class="carousel-control left" onclick="changeSlide(-1)">
             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="40" viewBox="0 0 21 40" fill="none">
@@ -290,4 +266,10 @@
 <script src="timer.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
 <script src="loyal.js"></script>
+<script src="auth.js"></script>
+<script src="cookies.js"></script>
+<script src="getUser.js"></script>
+<script src="danekierowcy.js"></script>
+<script src="orderhistory.js"></script>
+
 </html>

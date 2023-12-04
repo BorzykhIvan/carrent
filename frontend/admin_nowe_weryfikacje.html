@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Map</title>
+
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar__wrap">
+                    <div class="hamb">
+                        <div class="hamb__field" id="hamb">
+                            <span class="bar"></span> <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                    <a href="/" class="logo" id="logo"><img class="logoo"
+                            src="https://fra1.digitaloceanspaces.com/carrentbucket/static/logo.png" alt="mazdalogo"></a>
+                    <ul class="menu" id="menu">
+                        <li><a href="/flota">Flota</a></li>
+                        <li><a href="/map">Mapa</a></li>
+                        <li><a href="/bonusy">Promocje</a></li>
+                        <li><a href="/pomoc">Pomoc</a></li>
+                        <li id="loginLink"><a href="/login"><img
+                                    src="https://fra1.digitaloceanspaces.com/carrentbucket/static/login_human.svg"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="popup" id="popup"></div>
+    </header>
+
+    </div>
+
+    <main>
+        <div class="main_ppanel">
+            <div class="main_panel">
+                <div class="panel">
+                    <p class="admin_name">WERYFIKACJA</p>
+                </div>
+                <div class="panel_right">
+                    <img class="panel_arrow"
+                        src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Arrowkonto.svg">
+                    <a class="moje_konto_link" href="/admin_nowe_weryfikacje">ADMINISTRATOR</a>
+                </div>
+            </div>
+            </div>
+            <div class="admin_nowe_weryfikacje">
+                <div class="dokumenty">
+                <h3>Dokumenty</h3>
+                <div class="weryfikacja">
+                    <p class="email_weryfikacja">user@przyklad.com</p>
+                    <button class="weryfikuj">Weryfikuj</button>
+                </div>
+                </div>
+                <div class="bonusy">
+                    <h3>Bonusy</h3>
+                    <div class="weryfikacja">
+                        <p class="nazwa_bonusu">NAZWA BONUSU</p>
+                        <p class="bonus_weryfikacja">user@przyklad.com</p>
+                        <button class="weryfikuj_bonus">Weryfikuj</button>
+                    </div>
+                    </div>
+            </div>
+    </main>
+
+    <footer>
+        <div class="foter">
+            <div class="footer_logo"><img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group1.svg"
+                    class="footer_img"></div>
+            <div class="footer_discription">
+                <p>Skontaktuj się z nami: <br><br>carsharing@carsharing.pl</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="auth.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Подключаем jQuery -->
+<script src="weryfikacja_dokumenty.js"></script>
+</html>
