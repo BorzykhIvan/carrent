@@ -23,6 +23,19 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
             console.log('Данные успешно отправлены на сервер:', authData);
             const authToken = authData.auth_token;
             document.cookie = `authToken=${authToken}; path=/; SameSite=Strict; Secure`;
+
+            
+            if (authToken === undefined) {
+                alert("Invalid information");
+                return;
+                
+            } else if (email === "admin@admin.com")  {
+                window.location.replace("/adminpage"); 
+                
+            } else 
+            window.location.replace("/kontoklient");
+
+
         })
         .catch(error => {
             console.error('Ошибка отправки данных на сервер:', error);

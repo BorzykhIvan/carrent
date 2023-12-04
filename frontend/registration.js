@@ -44,6 +44,7 @@ document.getElementById("registrationForm").addEventListener("submit", function 
         .then(data => {
             console.log('Данные успешно отправлены на сервер:', data);
             // Здесь вы можете добавить логику обработки успешной отправки данных
+            window.location.replace("/login");
         })
         .catch(error => {
             console.error('Ошибка отправки данных на сервер:', error);
