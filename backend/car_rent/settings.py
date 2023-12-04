@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework.authtoken",
+    "djoser",
     "authentication.apps.AuthenticationConfig",
     "backend.apps.BackendConfig",
-    "drf_yasg",
     "corsheaders",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -140,6 +142,7 @@ AUTH_USER_MODEL = "authentication.User"
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+
 STORAGES = {
     "staticfiles": {
         "BACKEND": "storages.backends.s3.S3Storage",
@@ -155,3 +158,26 @@ STORAGES = {
 
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Car Rent API",
+    "DESCRIPTION": "Car Rent project for The Opole University of Tehcnology",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
+DJOSER = {
+    "SERIALIZERS": {
+        "current_user": "authentication.serializers.UserSerializer",
+        "user_create": "authentication.serializers.UserSerializer",
+    },
+}
