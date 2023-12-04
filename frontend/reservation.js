@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const carList = document.getElementById('carList');
   let selectedCarId;
 
+
   carList.addEventListener('click', function (event) {
     const target = event.target;
 
@@ -320,6 +321,7 @@ function sendPostRequest(start_date, end_date, car_id) {
     .then(response => response.json())
     .then(data => {
       console.log('Odpowiedź od serwera (POST):', data);
+      sendEmail(car_id, start_date, end_date);
     })
     .catch(error => {
       console.error('Błąd (POST):', error);
@@ -331,3 +333,19 @@ function getAuthTokenFromCookie() {
   const authTokenCookie = cookies.find(cookie => cookie.startsWith('authToken='));
   return authTokenCookie ? authTokenCookie.split('=')[1] : null;
 }
+
+function sendEmail(car, start_date, end_date) {
+  let profile_el = document.getElementById("loginLink");
+  let email = profile_el.querySelector("a");
+
+  Email.send({
+    SecureToken: "852112c0-c7f5-4aa8-a320-ed61d8370671",
+    To: `${email.text}`,
+    From: "admin@annesmesh.fun",
+    Subject: "Test",
+    Body: `<html><h2>Thank you for your order at annesmesh.fun</h2><strong>You have ordered a car with id ${car}</strong><br><br><em>From ${start_date}<br>To ${end_date}</em></html>`
+  }).then(
+    message => alert(message)
+  );
+}
+
