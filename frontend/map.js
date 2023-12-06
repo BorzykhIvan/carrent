@@ -48,8 +48,16 @@ ymaps.ready(function () {
         myPieChart2 = new ymaps.Placemark([
             50.652567, 17.905578
         ], {
-            hintContent: 'Flota',
-            balloonContent: 'Car 3 '
+            // Зададим содержимое заголовка балуна.
+        balloonContentHeader: '<img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/CarMarker.svg" height="40" width="60">   50.652567, 17.905578<br/>MERCEDES MAYBACH</br> OP2565 ',
+    // Зададим содержимое основной части балуна.
+    balloonContentBody: '<img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/manual-transmission_6500196%201.png" height="20" width="20">AUTOMAT<img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/gas-station.png" height="20" width="20"> PB95',
+    // Зададим содержимое нижней части балуна.
+    balloonContentFooter: '<div class="submit-button"> <input type="submit" value="ZAREZERWUJ" ></div>',
+    
+   
+    // Зададим содержимое всплывающей подсказки.
+    hintContent: 'MERCEDES MAYBACH OP2565'
         },{
             // Опции.
             // Необходимо указать данный тип макета.
