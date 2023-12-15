@@ -113,3 +113,13 @@ class UserAddress(models.Model):
     city = models.CharField(max_length=64)
     street = models.CharField(max_length=64)
     building = models.IntegerField()
+
+
+class ChangeRequest(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    change_data = models.JSONField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_accepted = models.BooleanField(default=False)
+    is_declined = models.BooleanField(default=False)

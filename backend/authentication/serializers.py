@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import User, UserAddress
 from backend.serializers import LoyaltySerializer
+from .models import User, UserAddress, ChangeRequest
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -57,8 +57,35 @@ class UserSerializer(serializers.ModelSerializer):
             instance.address.street = address_dict.get(
                 "street", instance.address.street
             )
+            instance.address.save()
         for field, data in validated_data.items():
             setattr(instance, field, data)
+        instance.save()
         return instance
 
-    # def send_change_request(self):
+    def create_change_request(self):
+        """Use only if instance(User) passed to serializer"""
+        request = ChangeRequest.objects.create(
+            user=self.instance, change_data=self.validated_data
+        )
+        return request
+
+
+class ChangeRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChangeRequest
+        fields = ["id", "change_data", "is_accepted", "is_declined", "user_id"]
+
+    def accept_changes(self):
+        user = User.objects.get(pk=self.data["user_id"])
+        serializer = UserSerializer(
+            instance=user, data=self.data["change_data"], partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        self.instance.is_accepted = True
+        self.instance.save()
+
+    def decline_changes(self):
+        self.instance.is_declined = True
+        self.instance.save()
