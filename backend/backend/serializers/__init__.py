@@ -1,6 +1,7 @@
-from .cars import *
-from .referrals import *
-from .orders import *
-from .messages import *
-from .loyalty import *
-from .dates import *
+from .cars import CarSerializer
+from .referrals import RefferalTokenSerializer
+from .orders import ListOrderSerializer, CreateOrderSerializer
+from .messages import ChatSerializer, MessageSerializer
+from .loyalty import LoyaltySerializer
+from .dates import DateSerializer
+from .bonuses import BonusSerializer, BonusTypeSerializer

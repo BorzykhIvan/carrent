@@ -11,13 +11,16 @@ from .views import (
     AdminMessagesView,
     ReservationView,
     CalculatorView,
+    BonusesViewSet,
+    BonusTypesViewSet,
 )
 
 router = DefaultRouter()
 router.register(r"cars", CarViewSet, basename="car")
 
 router.register(r"order", OrderView, basename="order")
-
+router.register(r"bonuses", BonusesViewSet)
+router.register(r"bonustypes", BonusTypesViewSet)
 urlpatterns = [
     path("", include(router.urls)),
     path("referral/", RefferalView.as_view()),

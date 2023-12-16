@@ -41,7 +41,6 @@ class CarSerializer(Serializer):
         image_urls = upload_to_bucket(
             files=image_data, path="images/", bucket="carrentbucket"
         )
-        print(image_urls)
 
         car = Car.objects.create(
             brand=brand,
@@ -70,11 +69,12 @@ class CarSerializer(Serializer):
             fuel, created = FuelType.objects.get_or_create(name=fuel_data)
             validated_data["fuel_type"] = fuel
 
-        image_data = validated_data.pop("image_url")
-        image_urls = upload_to_bucket(
-            files=image_data, path="images/", bucket="carrentbucket"
-        )
-        instance.image_url = image_urls[0]
+        image_data = validated_data.get("image_url")
+        if image_data:
+            image_urls = upload_to_bucket(
+                files=image_data, path="images/", bucket="carrentbucket"
+            )
+            validated_data.image_url = image_urls[0]
 
         for key, val in validated_data.items():
             setattr(instance, key, val)

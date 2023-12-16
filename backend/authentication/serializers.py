@@ -29,8 +29,6 @@ class UserSerializer(serializers.ModelSerializer):
         ]
 
     def create(self, validated_data):
-        print(validated_data)
-
         address_dict = validated_data.pop("address")
         city = address_dict.pop("city")
         building = address_dict.pop("building")
