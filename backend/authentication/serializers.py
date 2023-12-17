@@ -77,7 +77,7 @@ class ChangeRequestSerializer(serializers.ModelSerializer):
         fields = ["id", "change_data", "is_accepted", "is_declined", "user"]
 
     def accept_changes(self):
-        user = self.data["user"]
+        user = self.context["request"].user
         serializer = UserSerializer(
             instance=user, data=self.data["change_data"], partial=True
         )
