@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from ..models import Bonus, BonusType
 from ..utils.files import upload_to_bucket
+from ..serializers.users import UserSerializer
 
 
 class BonusTypeSerializer(serializers.ModelSerializer):
@@ -39,12 +40,13 @@ class BonusSerializer(serializers.ModelSerializer):
     bonus_type_id = serializers.PrimaryKeyRelatedField(
         queryset=BonusType.objects.all(), source="bonus_type"
     )
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Bonus
         fields = [
             "id",
-            "user_id",
+            "user",
             "bonus_type_id",
             "proof_image",
             "is_accepted",
