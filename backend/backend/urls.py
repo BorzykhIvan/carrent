@@ -13,6 +13,7 @@ from .views import (
     CalculatorView,
     BonusesViewSet,
     BonusTypesViewSet,
+    CommentViewSet,
 )
 
 router = DefaultRouter()
@@ -21,6 +22,7 @@ router.register(r"cars", CarViewSet, basename="car")
 router.register(r"order", OrderView, basename="order")
 router.register(r"bonuses", BonusesViewSet)
 router.register(r"bonustypes", BonusTypesViewSet)
+router.register(r"comments", CommentViewSet)
 urlpatterns = [
     path("", include(router.urls)),
     path("referral/", RefferalView.as_view()),
