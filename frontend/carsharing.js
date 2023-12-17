@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <a class="day_logo"><img class="day_logoo" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/one.png"></a>
               <p class="price">${car.day_price} ZŁ</p>
             </div>
-            <div class="carbutton">
+            <div class="carbutton" data-car-id="${car.id}">
               <p class="deleteCar" data-car-id="${car.id}">ZAREZERWUJ</p> <!-- Здесь текст "ZAREZERWUJ" -->    
             </div>
           `;

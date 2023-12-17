@@ -1484,6 +1484,7 @@ tbody td {
   justify-content: center;
   align-items: center;
   width: 60px;
+  border-radius: 40px;
 }
 
 .moje_konto_link {
