@@ -29,9 +29,6 @@ class UserViewSet(DjoserUserViewSet):
         )  # add message to our changed data response
         return Response(response)
 
-    def partial_update(self, request, *args, **kwargs):
-        return super().partial_update(request, *args, **kwargs)
-
 
 class ChangeRequestViewSet(
     mixins.RetrieveModelMixin,
