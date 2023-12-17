@@ -9,7 +9,7 @@ from django.contrib.auth.models import (
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 from django.db import IntegrityError
-
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 from backend.models import UserLevel
 
 
@@ -36,13 +36,19 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_superuser(self, email, password, first_name, last_name) -> "User":
+    def create_superuser(
+        self, email, password, first_name, last_name, phone_number
+    ) -> "User":
         if not email:
             raise ValueError("An email is required.")
         if not password:
             raise ValueError("A password is required.")
         user = self.create_user(
-            email=email, password=password, first_name=first_name, last_name=last_name
+            email=email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            phone_number=phone_number,
         )
         user.is_superuser = True
         user.is_staff = True
@@ -80,6 +86,10 @@ class User(AbstractBaseUser, PermissionsMixin):
             "Unselect this instead of deleting accounts."
         ),
     )
+    birth_date = models.DateField(null=True)
+    pesel = models.CharField(
+        max_length=11, null=True, validators=[MinLengthValidator(11)]
+    )
     date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
     referrer = models.ForeignKey(
         "self", on_delete=models.CASCADE, related_name="referrals", null=True
@@ -102,7 +112,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name"]
+    REQUIRED_FIELDS = ["first_name", "last_name", "phone_number"]
 
 
 class UserAddress(models.Model):

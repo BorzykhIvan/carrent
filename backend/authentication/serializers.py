@@ -26,6 +26,8 @@ class UserSerializer(serializers.ModelSerializer):
             "loyalty_score",
             "phone_number",
             "password",
+            "pesel",
+            "birth_date",
         ]
 
     def create(self, validated_data):
@@ -63,6 +65,11 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create_change_request(self):
         """Use only if instance(User) passed to serializer"""
+        if "birth_date" in self.validated_data:
+            self.validated_data["birth_date"] = self.validated_data[
+                "birth_date"
+            ].strftime("%Y-%m-%d")
+
         request = ChangeRequest.objects.create(
             user=self.instance, change_data=self.validated_data
         )
