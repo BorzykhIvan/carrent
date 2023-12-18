@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let cell5 = row.insertCell();
             cell5.innerHTML = `${element.amount}`;
         });
-        
+
     })
 
     fetch('https://carrent-w2et2.ondigitalocean.app/api/messages/', {
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let cell1 = row.insertCell();
             cell1.innerHTML = `${element.chat.user.first_name} ${element.chat.user.last_name}`;
             let cell2 = row.insertCell();
-            cell2.innerHTML = `${element.content}`;
-            
+            cell2.innerHTML = `<a href="/reply?chat_id=${element.chat.id}">${element.content}</a>`;
+
         });
     })
 
@@ -65,5 +65,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    
-        
+
+

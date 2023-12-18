@@ -21,8 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }).then(response => response.json())
     .then(response => {
       // console.log(response);
+      // response = response.reverse();
+      response = response.sort((a, b) => a.id - b.id);
       response.forEach(message => {
-        if (message.is_admin == null) {
+        if (message.is_admin == false) {
           appendMessage(PERSON_NAME, PERSON_IMG, "right", message.content, message.date)
         } else {
           appendMessage(BOT_NAME, BOT_IMG, "left", message.content, message.date)
