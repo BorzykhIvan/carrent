@@ -19,6 +19,6 @@ class CommentViewSet(
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
             return []
-        elif self.action == "destroy":
+        if self.action == "destroy":
             return [IsAdminUser()]
         return [IsAuthenticated()]  # create action

@@ -10,16 +10,15 @@ class RefferalTokenSerializer(serializers.Serializer):
         user_model = get_user_model()
         try:
             referrer = user_model.objects.get(referral_token=validated_data)
-        except user_model.DoesNotExist:
-            raise serializers.ValidationError("Your token is not valid")
-        else:
-            self.referrer = referrer
+        except user_model.DoesNotExist as exc:
+            raise serializers.ValidationError("Your token is not valid") from exc
+        self.context["referrer"] = referrer
 
     def activate_token(self, user):
         if user.referrer:
             raise ValueError("You have already activated referral code")
-        if user.id != self.referrer.id:
-            user.referrer = self.referrer
+        if user.id != self.context["referrer"].id:
+            user.referrer = self.context["referrer"]
             user.save()
         else:
             raise ValueError("You can't activate your token")

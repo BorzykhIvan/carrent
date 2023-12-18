@@ -2,7 +2,7 @@ from datetime import date
 from django.db.models import Q
 
 
-from ..models import Order, Car
+from ..models import Order
 
 
 def get_occupied_slots(car_id: int) -> list[Order]:

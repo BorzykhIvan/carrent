@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ModelViewSet
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, SAFE_METHODS
 from rest_framework.decorators import action
-from ..models import BonusType, Bonus, UserPoints
+from ..models import BonusType, Bonus
 from ..serializers import BonusSerializer, BonusTypeSerializer
 
 
