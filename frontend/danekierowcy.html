@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200&display=swap" rel="stylesheet">
-    <title>Konto Klienta</title>
+    <title>Dane Kierowcy</title>
 </head>
 
 <body>
@@ -77,23 +77,25 @@
                     <div class="pesel">
                         <div class="edit">
                             <h3>Numer pesel:</h3>
-                            <button class="edit_danne">ZMIEŃ</button>
+                            <button class="edit_danne" onclick="editContent('pesel')">ZMIEŃ</button>
                         </div>
-                        <p>brak</p>
+                        <p id="pesel">brak</p>
                     </div>
                     <div class="data_urodzenia">
                         <div class="edit">
                             <h3>Data urodzenia:</h3>
-                            <button class="edit_danne">ZMIEŃ</button>
+                            <button class="edit_danne" onclick="editContent('birth_date')">ZMIEŃ</button>
                         </div>
-                        <p>24.12.1999</p>
+                        <p id="birth_date">BRAK</p>
                     </div>
                 </div>
                 <div class="right_content">
                     <div class="taxi">
                         <div class="edit">
                             <h3>Dla taxi:</h3>
+                            <a href="/taxi">
                             <button class="edit_danne">DODAJ</button>
+                        </a>
                         </div>
                         <p>brak</p>
                     </div>

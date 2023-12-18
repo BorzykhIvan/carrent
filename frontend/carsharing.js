@@ -97,7 +97,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchDataAndPopulatePage();
 });
-  
-const reservationScript = document.createElement('script');
-reservationScript.src = 'reservation.js';
-document.head.appendChild(reservationScript);
+

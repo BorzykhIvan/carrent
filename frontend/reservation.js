@@ -276,19 +276,16 @@ function sendReservationData(start_date, end_date, car_id) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('Ответ от бекенда:', data);
-      // Обновите DOM или выполните другие действия с полученными данными
 
       // Получите элемент с классом price_r
       const priceElement = document.querySelector('.price_r');
-      console.log(priceElement)
 
       // Предполагая, что data.total содержит новое значение
       const newPrice = data.total + ' ZŁ';
 
-      console.log('До обновления price_r:', priceElement.textContent);
+      // Обновите текст элемента price_r
       priceElement.textContent = newPrice;
-      console.log('После обновления price_r:', priceElement.textContent);
+
 
 
     })

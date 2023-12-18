@@ -6,18 +6,20 @@ function fetchData(authToken) {
             'Authorization': `Token ${authToken}`
         },
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Ошибка: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Обновляем данные на странице
-    document.getElementById('address').innerHTML = `${data.address.city}, ${data.address.street}, ${data.address.building}, ${data.address.zip_code}` || 'Адрес не указан';
-        document.getElementById('phone_number').innerHTML = data.phone_number || 'Номер телефона не указан';
-    })
-    .catch(error => console.error('Ошибка:', error.message));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Ошибка: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Обновляем данные на странице
+            document.getElementById('address').innerHTML = `${data.address.city}, ${data.address.street}, ${data.address.building}, ${data.address.zip_code}` || 'Адрес не указан';
+            document.getElementById('phone_number').innerHTML = data.phone_number || 'Номер телефона не указан';
+            document.getElementById('pesel').innerHTML = data.pesel || 'Brak pesel';
+            document.getElementById('birth_date').innerHTML = data.birth_date || 'Brak daty';
+        })
+        .catch(error => console.error('Ошибка:', error.message));
 }
 
 // Получаем токен
@@ -31,6 +33,7 @@ fetchData(storedToken);
 function editContent(elementId) {
     const element = document.getElementById(elementId);
 
+    const starttext = element.innerText;
     // Замените содержимое тега <p> на input для внесения изменений
     element.innerHTML = `<input type="text" id="${elementId}_input" value="${element.innerText}">`;
 
@@ -42,7 +45,7 @@ function editContent(elementId) {
             const updatedValue = inputElement.value;
 
             // Обновите содержимое элемента соответственно
-            element.innerText = updatedValue;
+            element.innerText = starttext;
 
             // Отправьте запрос PATCH на сервер с обновленными данными
             sendPatchRequest(elementId, updatedValue);
@@ -80,14 +83,14 @@ function sendPatchRequest(field, updatedValue) {
         },
         body: JSON.stringify(updatedData)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Ошибка: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Данные успешно обновлены:', data);
-    })
-    .catch(error => console.error('Ошибка при обновлении данных:', error.message));
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Ошибка: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Данные успешно обновлены:', data);
+        })
+        .catch(error => console.error('Ошибка при обновлении данных:', error.message));
 }
