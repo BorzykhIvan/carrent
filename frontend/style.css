@@ -824,6 +824,26 @@ input[type=submit]:hover {
   margin-bottom: 20px;
 }
 
+.submit-button22 {
+  width: 220px;
+}
+
+.submit-button22 {
+
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #D50000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+}
+
 .miastokod,
 .adresmiesz {
   display: flex;
