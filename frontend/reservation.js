@@ -266,12 +266,12 @@ function sendReservationData(start_date, end_date, car_id) {
   url.searchParams.append('start_date', start_date);
   url.searchParams.append('end_date', end_date);
   url.searchParams.append('car_id', car_id);
-
+  let authToken = getAuthTokenFromCookie();
   fetch(url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRFToken': 'Kz0N97DK68pqHJ5qGPpq6cy8UjpXJFkTRWdw7EAYg5talf5tHbikTQVYZJpvqiwO',
+      'Authorization': `${authToken}`,
     },
   })
     .then(response => response.json())
