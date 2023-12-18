@@ -2,6 +2,7 @@ const msgerForm = get(".msger-inputarea");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
 
+var authToken = getCookie('authToken');
 const BOT_MSGS = [
   "Zaczekaj na odpowiedz jednego z naszych operatorow",
 ];
@@ -21,7 +22,23 @@ msgerForm.addEventListener("submit", event => {
   appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
   msgerInput.value = "";
 
-  botResponse();
+  fetch('https://carrent-w2et2.ondigitalocean.app/api/chat/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${authToken}`,
+        },
+        body: JSON.stringify({
+            'content': msgText
+        }),
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка при получении данных ');
+        }
+        return response.json();
+    }).then(ordersData => {
+        console.log(ordersData);
+    })
 });
 
 function appendMessage(name, img, side, text) {
