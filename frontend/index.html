@@ -49,7 +49,8 @@
           <h4 class="subtitle">Twoje auto na każdą okazję</h4>
           <p class="promo-text">POZNAJ NAS</p>
           <a href="#" class="promo-arrow" id="scroll_bottom">
-            <img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Arrow1.png" class="promo_arrow_img" alt="ad">
+            <img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Arrow1.png" class="promo_arrow_img"
+              alt="ad">
           </a>
         </div>
       </div>
@@ -89,6 +90,42 @@
       </div>
       <p class="promo_text">Dołącz do nas i odkryj, jak możemy uczynić Twoje podróże jeszcze bardziej wyjątkowymi!</p>
     </section>
+    <section>
+      <div class="opinie">
+        <div class="coment">
+          <div id="review-form">
+            <p>Zostaw swoją opinię</p>
+            <input type="text" id="comment" placeholder="Komentarz">
+          </div>
+          <div class="rating">
+            <div class="card"> 
+              <p>Ocena</p> 
+              <br /> 
+              <span onclick="gfg(1)" 
+                    class="star">★ 
+              </span> 
+              <span onclick="gfg(2)" 
+                    class="star">★ 
+              </span> 
+              <span onclick="gfg(3)" 
+                    class="star">★ 
+              </span> 
+              <span onclick="gfg(4)" 
+                    class="star">★ 
+              </span> 
+              <span onclick="gfg(5)" 
+                    class="star">★ 
+              </span> 
+              <h3 id="output"> 
+                    Rating is: 0/5 
+                </h3> 
+          </div> 
+          </div>
+          <button id="submit_review" onclick="submitReview()">wyślij</button>
+        </div>
+        <div class="coment_baza" id="commentList">     
+        </div>
+    </section>
     <footer>
       <div class="foter">
         <div class="footer_logo"><img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Group1.svg"
@@ -98,7 +135,8 @@
         </div>
       </div>
     </footer>
-    </main> 
+  </main>
 </body>
 <script src="auth.js"></script>
+<script src="review_rating.js"></script>
 </html>

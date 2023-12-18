@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       // Получаем данные о бронировании для выбранного car_id
       fetchReservationData(selectedCarId)
         .then(reservationData => {
-          console.log('Полученные данные о бронировании:', reservationData);
 
           const imageUrl = carElement.querySelector('.carimgg').getAttribute('src');
           const brand = carElement.querySelector('.brand').textContent;
@@ -44,9 +43,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   function showReservationInfo(imageUrl, brand, model, reservationData) {
     const reservationDiv = document.createElement('div');
     reservationDiv.classList.add('reservation');
+    var token = getAuthTokenFromCookie();
 
-
-    reservationDiv.innerHTML = `
+    getUser(token).then(function (user) {
+      reservationDiv.innerHTML = `
         <div class="reservation_container">
           <div class="carimg">
             <img class="carimgg_reservation" src="${imageUrl}" alt="Car Image">
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           </div>
           <div class="reserv_loyal">
             <div class="level_reservation"><p>Poziom stałego klienta</p></div>
-            <div class="level_reservation1"><p>POZIOM 4</p></div>
+            <div class="level_reservation1"><p>POZIOM ${user.loyalty_level.level + 1}</p></div>
           </div>
           <div class="promo_reservation">
             <div class="kod_reservation"><p>Kod promocyjny</p></div>
@@ -86,29 +86,27 @@ document.addEventListener("DOMContentLoaded", async function () {
           <button class="close-button"><img class="close_button"src="https://fra1.digitaloceanspaces.com/carrentbucket/static/icon%20_cancel.svg"></button>
         </div>
       `;
-    document.body.appendChild(reservationDiv);
-
-    const priceButton = reservationDiv.querySelector('.price_button');
-    if (priceButton) {
-      priceButton.addEventListener('click', () => {
-        const startDate = fpStart.selectedDates[0].toISOString().split('T')[0];
-        const endDate = fpEnd.selectedDates[0].toISOString().split('T')[0];
-        const adjustedStartDate = new Date(startDate);
-        adjustedStartDate.setDate(adjustedStartDate.getDate() + 1);
-
-        const adjustedEndDate = new Date(endDate);
-        adjustedEndDate.setDate(adjustedEndDate.getDate() + 1);
-
-        const formattedStartDate = adjustedStartDate.toISOString().split('T')[0];
-        const formattedEndDate = adjustedEndDate.toISOString().split('T')[0];
-
-        // Вызываем функцию для отправки данных на бекенд
-        sendReservationData(formattedStartDate, formattedEndDate, selectedCarId);
-      });
-    }
-
-
-    const carButtonReservation = reservationDiv.querySelector('.carbutton_reservation');
+      document.body.appendChild(reservationDiv);
+      const priceButton = reservationDiv.querySelector('.price_button');
+      if (priceButton) {
+        priceButton.addEventListener('click', () => {
+          const startDate = fpStart.selectedDates[0].toISOString().split('T')[0];
+          const endDate = fpEnd.selectedDates[0].toISOString().split('T')[0];
+          const adjustedStartDate = new Date(startDate);
+          adjustedStartDate.setDate(adjustedStartDate.getDate() + 1);
+  
+          const adjustedEndDate = new Date(endDate);
+          adjustedEndDate.setDate(adjustedEndDate.getDate() + 1);
+  
+          const formattedStartDate = adjustedStartDate.toISOString().split('T')[0];
+          const formattedEndDate = adjustedEndDate.toISOString().split('T')[0];
+  
+          // Вызываем функцию для отправки данных на бекенд
+          sendReservationData(formattedStartDate, formattedEndDate, selectedCarId);
+        });
+      }
+  
+      const carButtonReservation = reservationDiv.querySelector('.carbutton_reservation');
     carButtonReservation.addEventListener('click', () => {
       const startDate = fpStart.selectedDates[0].toISOString().split('T')[0];
       const endDate = fpEnd.selectedDates[0].toISOString().split('T')[0];
@@ -131,7 +129,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const blockedStartDate = reservationData.blockedStartDate;
     const blockedEndDate = reservationData.blockedEndDate;
-
 
     const fpStart = flatpickr(startDatePicker, {
       enableTime: false,
@@ -242,22 +239,24 @@ document.addEventListener("DOMContentLoaded", async function () {
       }
     });
 
-    function updateStartDateText(element, dateStr) {
-      element.textContent = dateStr || "WYBIERZ";
-    }
+     // Добавляем обработчик события для кнопки закрытия
+     const closeButton = reservationDiv.querySelector('.close-button');
+     closeButton.addEventListener('click', () => {
+       // Удаляем блок при нажатии на кнопку закрытия
+       document.body.removeChild(reservationDiv);
+     });
 
-    function updateEndDateText(element, dateStr) {
-      element.textContent = dateStr || "WYBIERZ";
-    }
-
-    // Добавляем обработчик события для кнопки закрытия
-    const closeButton = reservationDiv.querySelector('.close-button');
-    closeButton.addEventListener('click', () => {
-      // Удаляем блок при нажатии на кнопку закрытия
-      document.body.removeChild(reservationDiv);
-    });
+    })
   }
 });
+
+function updateStartDateText(element, dateStr) {
+  element.textContent = dateStr || "WYBIERZ";
+}
+
+function updateEndDateText(element, dateStr) {
+  element.textContent = dateStr || "WYBIERZ";
+}
 
 function sendReservationData(start_date, end_date, car_id) {
   const baseUrl = 'https://carrent-w2et2.ondigitalocean.app/api/calculator/';
@@ -277,8 +276,6 @@ function sendReservationData(start_date, end_date, car_id) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('Ответ от бекенда:', data);
-      // Обновите DOM или выполните другие действия с полученными данными
 
       // Получите элемент с классом price_r
       const priceElement = document.querySelector('.price_r');
