@@ -9,3 +9,4 @@ drf-nested-routers
 django-filter
 djoser
 drf-spectacular
+django-debug-toolbar

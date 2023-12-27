@@ -1,4 +1,3 @@
-from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAdminUser, SAFE_METHODS
 from rest_framework import parsers
@@ -16,7 +15,9 @@ class CarViewSet(ModelViewSet):
         parsers.FileUploadParser,
     )
     serializer_class = CarSerializer
-    queryset = Car.objects.all()
+    queryset = Car.objects.select_related(
+        "brand", "transmission_type", "fuel_type"
+    ).all()
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = CarFilter
 

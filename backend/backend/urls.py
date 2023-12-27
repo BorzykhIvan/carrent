@@ -1,6 +1,5 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from rest_framework_nested import routers
 
 from .views import (
     CarViewSet,
@@ -11,13 +10,18 @@ from .views import (
     AdminMessagesView,
     ReservationView,
     CalculatorView,
+    BonusesViewSet,
+    BonusTypesViewSet,
+    CommentViewSet,
 )
 
 router = DefaultRouter()
 router.register(r"cars", CarViewSet, basename="car")
 
 router.register(r"order", OrderView, basename="order")
-
+router.register(r"bonuses", BonusesViewSet)
+router.register(r"bonustypes", BonusTypesViewSet)
+router.register(r"comments", CommentViewSet)
 urlpatterns = [
     path("", include(router.urls)),
     path("referral/", RefferalView.as_view()),

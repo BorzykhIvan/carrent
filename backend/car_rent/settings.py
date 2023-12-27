@@ -29,6 +29,9 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("CARRENT_DEBUG", "1") == "1"
 ALLOWED_HOSTS = ["*"]
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # Application definition
 
@@ -46,9 +49,12 @@ INSTALLED_APPS = [
     "backend.apps.BackendConfig",
     "corsheaders",
     "drf_spectacular",
+    "debug_toolbar",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
@@ -118,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Warsaw"
 
 USE_I18N = True
 
@@ -128,10 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "carrentbucket.fra1.cdn.digitaloceanspaces.com/"
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -142,20 +145,24 @@ AUTH_USER_MODEL = "authentication.User"
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+if DEBUG:
+    STATIC_URL = "static/"
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+else:
+    STATIC_URL = "carrentbucket.fra1.cdn.digitaloceanspaces.com/"
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {
-            "region_name": "fra1",
-            "endpoint_url": "https://fra1.digitaloceanspaces.com",
-            "custom_domain": "carrentbucket.fra1.cdn.digitaloceanspaces.com",
-            "bucket_name": "carrentbucket",
-            "default_acl": "public-read",
+    STORAGES = {
+        "staticfiles": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "region_name": "fra1",
+                "endpoint_url": "https://fra1.digitaloceanspaces.com",
+                "custom_domain": "carrentbucket.fra1.cdn.digitaloceanspaces.com",
+                "bucket_name": "carrentbucket",
+                "default_acl": "public-read",
+            },
         },
-    },
-}
-
+    }
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
@@ -173,6 +180,7 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "Car Rent project for The Opole University of Tehcnology",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
+    "COMPONENT_SPLIT_REQUEST": True,
 }
 
 DJOSER = {

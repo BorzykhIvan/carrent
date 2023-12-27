@@ -14,8 +14,8 @@ class CreateOrderSerializer(serializers.ModelSerializer):
     def validate_car_id(self, car_id):
         try:
             car_inst = Car.objects.get(id=car_id)
-        except Car.DoesNotExist:
-            raise serializers.ValidationError(f"Does not exist")
+        except Car.DoesNotExist as exc:
+            raise serializers.ValidationError("Does not exist") from exc
         self.context["car_inst"] = car_inst
         return car_id
 
@@ -25,22 +25,22 @@ class CreateOrderSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("You can`t reservate for past time")
         return start_date
 
-    def validate(self, data):
-        if data["start_date"] > data["end_date"]:
+    def validate(self, attrs):
+        if attrs["start_date"] > attrs["end_date"]:
             raise serializers.ValidationError(
                 "Start date can`t be greater than end date"
             )
         car_status = is_car_available(
-            start_date=data["start_date"],
-            end_date=data["end_date"],
-            car_id=data["car"]["id"],
+            start_date=attrs["start_date"],
+            end_date=attrs["end_date"],
+            car_id=attrs["car"]["id"],
         )
         if not car_status:
             raise serializers.ValidationError(
                 "This car already have reservation for this period"
             )
 
-        return data
+        return attrs
 
     def calculate_price(self):
         days = (

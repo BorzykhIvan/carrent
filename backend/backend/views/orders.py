@@ -45,7 +45,17 @@ class OrderView(ViewSet):
         responses={200: OpenApiResponse(response=ListOrderSerializer)},
     )
     def list(self, request):
-        orders = Order.objects.filter(user=request.user).all()
+        orders = (
+            Order.objects.filter(user=request.user)
+            .select_related(
+                "user",
+                "car",
+                "car__fuel_type",
+                "car__transmission_type",
+                "car__brand",
+            )
+            .all()
+        )
         serializer = ListOrderSerializer(instance=orders, many=True)
         return Response(serializer.data)
 
