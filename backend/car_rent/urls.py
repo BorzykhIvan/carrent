@@ -22,4 +22,5 @@ urlpatterns = [
     path("auth/", include("authentication.urls")),
     re_path(r"^auth/", include("djoser.urls.authtoken")),
     path("api/", include("backend.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
