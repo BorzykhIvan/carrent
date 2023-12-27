@@ -14,7 +14,10 @@ class BonusesViewSet(
     GenericViewSet,
 ):
     serializer_class = BonusSerializer
-    queryset = Bonus.objects.filter(is_accepted=False, is_declined=False)
+    queryset = Bonus.objects.select_related("user", "bonus_type").filter(
+        is_accepted=False, is_declined=False
+    )
+
     parser_classes = (
         parsers.FormParser,
         parsers.MultiPartParser,

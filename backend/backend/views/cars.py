@@ -15,7 +15,9 @@ class CarViewSet(ModelViewSet):
         parsers.FileUploadParser,
     )
     serializer_class = CarSerializer
-    queryset = Car.objects.all()
+    queryset = Car.objects.select_related(
+        "brand", "transmission_type", "fuel_type"
+    ).all()
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = CarFilter
 

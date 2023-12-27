@@ -14,7 +14,7 @@ class CommentViewSet(
     GenericViewSet,
 ):
     serializer_class = CommentSerializer
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.select_related("user").all()
 
     def get_permissions(self):
         if self.request.method in SAFE_METHODS:
