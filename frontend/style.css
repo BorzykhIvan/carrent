@@ -586,16 +586,6 @@ input[type=submit]:hover {
   background-color: #D50000;
 }
 
-.content {
-  background-image: url(/img/pexels-pixabay-63294.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
 .form {
   max-width: 1200px;
   margin: 0 auto;
@@ -1690,19 +1680,21 @@ tbody td {
 }
 
 #accept,
-#decline ,
+#decline,
 #acceptt,
-#declinee{
+#declinee {
   border-radius: 40px;
   width: 90px;
   height: 30px;
 }
 
-#accept ,#acceptt  {
+#accept,
+#acceptt {
   background-color: rgb(72, 187, 72);
 }
 
-#decline, #declinee {
+#decline,
+#declinee {
   background-color: #D50000;
 }
 
@@ -1731,16 +1723,16 @@ tbody td {
   margin-bottom: 100px;
 }
 
-#submit-btn{
+#submit-btn {
   text-transform: uppercase;
   margin-top: 0px;
 }
 
-#rating{
+#rating {
   border: 2px solid;
 }
 
-#submit_review{
+#submit_review {
   height: 50px;
   width: 100px;
   border-radius: 40px;
@@ -1749,79 +1741,79 @@ tbody td {
   color: white;
 }
 
-#review-form p{
+#review-form p {
   text-align: center;
 }
 
-.rating label{
+.rating label {
   text-align: center;
 }
 
-.card { 
-  width: 100%; 
-} 
-
-.star { 
-  font-size: 8vh; 
-} 
-
-.one { 
-  color: #D50000; 
-} 
-
-.two { 
-  color: #D50000; 
-} 
-
-.three { 
-  color: #D50000; 
-} 
-
-.four { 
-  color: #D50000; 
-} 
-
-.five { 
-  color: #D50000; 
+.card {
+  width: 100%;
 }
 
-.comment-item{
- margin-bottom: 100px;
+.star {
+  font-size: 8vh;
 }
 
-.comment-item p{
+.one {
+  color: #D50000;
+}
+
+.two {
+  color: #D50000;
+}
+
+.three {
+  color: #D50000;
+}
+
+.four {
+  color: #D50000;
+}
+
+.five {
+  color: #D50000;
+}
+
+.comment-item {
+  margin-bottom: 100px;
+}
+
+.comment-item p {
   font-size: 20px;
 }
 
-.opin_main{
+.opin_main {
   display: flex;
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: rgb(255, 255, 255);
   border: 1px solid #ccc;
   border-radius: 40px;
-  height:auto;
+  height: auto;
 }
 
-.opin_kom{
+.opin_kom {
   width: 33.3%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.opin_kom p{
+.opin_kom p {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.taxi{
+.taxi {
   margin-top: 50px;
 }
 
-.bonuss_img{
+.bonuss_img {
   margin-bottom: 15px;
   height: 300px;
 }
