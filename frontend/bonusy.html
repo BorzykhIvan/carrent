@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <title>Map</title>
+    <title>Bonusy</title>
 
 </head>
 
@@ -51,14 +51,20 @@
                         <p class="bonus_title">Tankowanie samochodu</p>
                         <p>Zatankuj auto za pomocą naszej firmowej karty ponad połowę baku, wyślij zdjęcie
                             do/po i zgarnij 30zł.</p>
-                        <button class="tank_button">TANKUJ</button>
-                    </div>
+                            <form id="uploadForm">
+                                <input type="file" id="fileInput" style="display: none;">
+                                <button type="button" class="tank_button" onclick="chooseFile()">TANKUJ</button>
+                            </form>
+                        </div>
                     <div class="right_bonus">
                         <img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/myjnia_bonus.jpg"
                             class="bonus_img">
                         <p class="bonus_title">Mycie samochodu</p>
                         <p>Umyj i odkurz samochód na własny koszt, wyślij zdjęcia do weryfikacji i dostań bonus.</p>
-                        <button class="umyj_button">UMYJ</button>
+                        <form id="uploadForm">
+                            <input type="file" id="fileInputt" style="display: none;">
+                            <button type="button" class="umyj_button" onclick="chooseFile()">UMYJ</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -91,6 +97,5 @@
 </body>
 <script src="auth.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Подключаем jQuery -->
-<script src="weryfikacja_dokumenty.js"></script>
-
+<script src="bonus.js"></script>
 </html>

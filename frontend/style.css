@@ -586,16 +586,6 @@ input[type=submit]:hover {
   background-color: #D50000;
 }
 
-.content {
-  background-image: url(/img/pexels-pixabay-63294.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
 .form {
   max-width: 1200px;
   margin: 0 auto;
@@ -822,6 +812,26 @@ input[type=submit]:hover {
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.submit-button22 {
+  width: 220px;
+}
+
+.submit-button22 {
+
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #D50000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
 }
 
 .miastokod,
@@ -1484,6 +1494,7 @@ tbody td {
   justify-content: center;
   align-items: center;
   width: 60px;
+  border-radius: 40px;
 }
 
 .moje_konto_link {
@@ -1617,4 +1628,204 @@ tbody td {
   font-weight: 400;
   font-size: 18px;
   margin-bottom: 100px;
+}
+
+.popup {
+  width: 600px;
+  height: 600px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  background-color: rgb(255, 255, 255);
+  display: none;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.close_weryf {
+  height: 27px;
+}
+
+.close-weryf {
+  border: none;
+  background: none;
+  position: absolute;
+  left: 93%;
+  top: 2%;
+}
+
+.popup p {
+  margin: 5px;
+}
+
+#change-data {
+  margin-top: 50px;
+}
+
+#change-data p {
+  color: #D50000;
+  margin: 5px;
+}
+
+.decision {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+#accept,
+#decline,
+#acceptt,
+#declinee {
+  border-radius: 40px;
+  width: 90px;
+  height: 30px;
+}
+
+#accept,
+#acceptt {
+  background-color: rgb(72, 187, 72);
+}
+
+#decline,
+#declinee {
+  background-color: #D50000;
+}
+
+#comment {
+  border: 2px solid;
+  width: 500px;
+  border-radius: 40px;
+  margin-top: 25px;
+}
+
+#rating {
+  margin-bottom: 10px;
+  border-radius: 40px;
+}
+
+.opinie {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.coment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+#submit-btn {
+  text-transform: uppercase;
+  margin-top: 0px;
+}
+
+#rating {
+  border: 2px solid;
+}
+
+#submit_review {
+  height: 50px;
+  width: 100px;
+  border-radius: 40px;
+  margin-top: 20px;
+  background-color: #D50000;
+  color: white;
+}
+
+#review-form p {
+  text-align: center;
+}
+
+.rating label {
+  text-align: center;
+}
+
+.card {
+  width: 100%;
+}
+
+.star {
+  font-size: 8vh;
+}
+
+.one {
+  color: #D50000;
+}
+
+.two {
+  color: #D50000;
+}
+
+.three {
+  color: #D50000;
+}
+
+.four {
+  color: #D50000;
+}
+
+.five {
+  color: #D50000;
+}
+
+.comment-item {
+  margin-bottom: 100px;
+}
+
+.comment-item p {
+  font-size: 20px;
+}
+
+.opin_main {
+  display: flex;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  height: auto;
+}
+
+.opin_kom {
+  width: 33.3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.opin_kom p {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.taxi {
+  margin-top: 50px;
+}
+
+.bonuss_img {
+  margin-bottom: 15px;
+  height: 300px;
+}
+
+.close_weryf-bonus {
+  height: 27px;
+}
+
+.close-weryf-bonus {
+  border: none;
+  background: none;
+  position: absolute;
+  left: 93%;
+  top: 2%;
 }
