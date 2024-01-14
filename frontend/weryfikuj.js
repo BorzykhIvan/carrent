@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
     // Добавляем обработчик событий для клика по кнопке
     const authToken = getCookie('authToken');
+    let popupDiv;
+
     document.addEventListener('click', function (event) {
         // Проверяем, что клик произошел на кнопке с классом 'weryfikuj'
         if (event.target.classList.contains('weryfikuj')) {
@@ -17,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 success: function (userData) {
                     // Создаем элемент div для всплывающего окна
-                    const popupDiv = document.createElement('div');
+                    popupDiv = document.createElement('div');
                     popupDiv.className = 'popup';
                     popupDiv.style.display = 'flex';
 
@@ -171,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             .then(response => response.json())
                             .then(data => {
                                 console.log(data);
-                                document.body.removeChild(popupDiv);
+                                document.body.removeChild(bonusPopupDiv);
 
                             })
                     });

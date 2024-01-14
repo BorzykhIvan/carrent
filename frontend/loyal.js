@@ -1,37 +1,3 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const arrow = document.getElementById('arrow');
-    
-    // Устанавливаем начальный угол поворота стрелки
-    arrow.style.transformOrigin = 'right'; // Устанавливаем точку вращения в левый конец стрелки
-    arrow.style.transform = 'rotate(180deg)';
-    
-    // Задаем параметры анимации для стрелки
-    const animationParams = {
-        fromAngle: 0,
-        toAngle: 180,
-        duration: 2000, // Продолжительность анимации в миллисекундах (в данном случае 2 секунды)
-        startTime: Date.now(),
-    };
-
-    // Функция анимации стрелки
-    function animateArrow() {
-        const currentTime = Date.now();
-        const progress = (currentTime - animationParams.startTime) / animationParams.duration;
-
-        if (progress < 1) {
-            // Продолжаем анимацию, если не достигнут конечный угол
-            const currentAngle = animationParams.fromAngle + (animationParams.toAngle - animationParams.fromAngle) * progress;
-            arrow.style.transform = `rotate(${currentAngle}deg)`;
-            requestAnimationFrame(animateArrow);
-        } else {
-            // Анимация завершена
-            arrow.style.transform = `rotate(${animationParams.toAngle}deg)`;
-        }
-    }
-
-    // Запускаем анимацию при загрузке страницы
-    animateArrow();
-});
 
 
 document.addEventListener("DOMContentLoaded", function() {
