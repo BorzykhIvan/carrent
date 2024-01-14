@@ -51,19 +51,19 @@
                         <p class="bonus_title">Tankowanie samochodu</p>
                         <p>Zatankuj auto za pomocą naszej firmowej karty ponad połowę baku, wyślij zdjęcie
                             do/po i zgarnij 30zł.</p>
-                            <form id="uploadForm">
-                                <input type="file" id="fileInput" style="display: none;">
-                                <button type="button" class="tank_button" onclick="chooseFile()">TANKUJ</button>
+                            <form id="uploadForm1">
+                                <input type="file" id="fileInput1" style="display: none;">
+                                <button type="button" class="tank_button" onclick="chooseFile(1)">TANKUJ</button>
                             </form>
-                        </div>
+                    </div>
                     <div class="right_bonus">
                         <img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/myjnia_bonus.jpg"
                             class="bonus_img">
                         <p class="bonus_title">Mycie samochodu</p>
                         <p>Umyj i odkurz samochód na własny koszt, wyślij zdjęcia do weryfikacji i dostań bonus.</p>
-                        <form id="uploadForm">
-                            <input type="file" id="fileInputt" style="display: none;">
-                            <button type="button" class="umyj_button" onclick="chooseFile()">UMYJ</button>
+                        <form id="uploadForm2">
+                            <input type="file" id="fileInput2" style="display: none;">
+                            <button type="button" class="umyj_button" onclick="chooseFile(2)">UMYJ</button>
                         </form>
                     </div>
                 </div>
@@ -98,4 +98,5 @@
 <script src="auth.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> <!-- Подключаем jQuery -->
 <script src="bonus.js"></script>
+
 </html>
