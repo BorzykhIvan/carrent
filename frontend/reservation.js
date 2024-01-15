@@ -271,7 +271,7 @@ function sendReservationData(start_date, end_date, car_id) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `${authToken}`,
+      'Authorization': `Token ${authToken}`,
     },
   })
     .then(response => response.json())
