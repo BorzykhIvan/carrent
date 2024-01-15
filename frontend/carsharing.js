@@ -47,7 +47,7 @@ function fetchDataAndPopulatePage(cars) {
         <a class="fuel_logo"><img class="fuel_logoo" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/gas-station.png"></a>
         <p class="fuel_type">${car.fuel_type}</p>
         <a class="day_logo"><img class="day_logoo" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/one.png"></a>
-        <p class="price">${car.day_price} ZЕЃ</p>
+        <p class="price">${car.day_price} ZŁ</p>
       </div>
       <div class="carbutton" data-car-id="${car.id}">
         <p class="deleteCar" data-car-id="${car.id}">ZAREZERWUJ</p> <!-- Р—РґРµСЃСЊ С‚РµРєСЃС‚ "ZAREZERWUJ" -->    
