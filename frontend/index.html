@@ -47,8 +47,8 @@
         <div class="promo-inner">
           <h1 class="title">CARSHARING</h1>
           <h4 class="subtitle">Twoje auto na każdą okazję</h4>
-          <p class="promo-text">POZNAJ NAS</p>
-          <a href="#" class="promo-arrow" id="scroll_bottom">
+          <p class="promo-text" onclick="scrollToDescription()" >POZNAJ NAS</p>
+          <a href="#" class="promo-arrow" onclick="scrollToBottom()" id="scroll_bottom">
             <img src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Arrow1.png" class="promo_arrow_img"
               alt="ad">
           </a>
@@ -57,9 +57,9 @@
     </section>
     <section class="info">
       <div class="info-part1">
-        <img class="arrow" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Line1.svg">
+        <img class="arrow" id="descriptionSection" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Line1.svg">
         <div class="info_part1_description">
-          <p>Witaj w CarSharing – Twojej pierwszej opcji w Opolu, jeśli chodzi o komfort i wygodę<br>podróży samochodem!
+          <p >Witaj w CarSharing – Twojej pierwszej opcji w Opolu, jeśli chodzi o komfort i wygodę<br>podróży samochodem!
             Jesteśmy młodą i dynamicznie rozwijającą się firmą, której<br> celem jest zapewnić Ci najwyższą jakość usług
             w dziedzinie wypożyczania<br> samochodów na każdą okazję.</p>
         </div>
@@ -81,7 +81,7 @@
       </div>
       <div class="info-part3">
         <img class="mapa" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Opolskie_mapa.png">
-        <p>Jesteśmy dumni z naszego korzeni w <br>Opolu. Nasza centralna lokalizacja <br>sprawia, że jesteśmy łatwo
+        <p>Jesteśmy dumni z naszych korzeni w <br>Opolu. Nasza centralna lokalizacja <br>sprawia, że jesteśmy łatwo
           dostępni dla <br>naszych klientów. Dzięki temu możesz <br>szybko wyruszyć w podróż, ciesząc się <br>komfortem
           naszych aut już od pierwszej <br>minuty.<br>
           CarSharing to więcej niż tylko <br>wypożyczalnia samochodów. To sposób <br>na przekształcenie każdej podróży w
@@ -94,7 +94,7 @@
       <div class="opinie">
         <div class="coment">
           <div id="review-form">
-            <p>Zostaw swoją opinię</p>
+            <p id="leaveReviewText">Zostaw swoją opinię</p>
             <input type="text" id="comment" placeholder="Komentarz">
           </div>
           <div class="rating">
@@ -139,4 +139,35 @@
 </body>
 <script src="auth.js"></script>
 <script src="review_rating.js"></script>
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+      // Проверяем, авторизован ли пользователь
+      var authToken = getCookie('authToken');
+      if (!authToken) {
+        // Użytkownik nie jest zalogowany, zmień tekst
+        document.getElementById('leaveReviewText').innerText = 'Zaloguj się, aby zostawić opinię';
+      }
+    });
+
+  function scrollToBottom() {
+    // Przewijanie do dolnej części strony
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+  }
+
+  function scrollToDescription() {
+      // Przewijanie do sekcji z opisem
+      document.getElementById('descriptionSection').scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+
+       // Funkcja do uzyskiwania wartości ciasteczka po nazwie
+       function getCookie(name) {
+      var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      if (match) return match[2];
+    }
+</script>
 </html>

@@ -47,7 +47,7 @@
     <div class="flota">
       <div class="info-flota">
         <h1 class="banner">Szybko, łatwo, bezpiecznie - nasze auta gotowe na drogę!</h1>
-        <div class="cartools">
+        <div class="cartools"  id="cartoolsSection">
           <div class="editbutton">
             <a href="#" id="button-1" class="editCar">Usuń<img id="arrow-hover"
                 src="https://fra1.digitaloceanspaces.com/carrentbucket/static/busket.svg" /></a>
@@ -112,5 +112,25 @@
 <script src="filtr.js"></script>
 <script src="carsharing.js"></script>
 <script src="reservation.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var authToken = getCookie('authToken');
+    if (authToken) {
+      // Zalogowany użytkownik, pokaż sekcję cartools
+      var cartoolsSection = document.getElementById('cartoolsSection');
+      if (cartoolsSection) {
+        cartoolsSection.style.display = 'flex';
+      }
+      // reszta kodu dla zalogowanego użytkownika
+    } else {
+      // Niezalogowany użytkownik, ukryj sekcję cartools
+      var cartoolsSection = document.getElementById('cartoolsSection');
+      if (cartoolsSection) {
+        cartoolsSection.style.display = 'none';
+      }
+      // reszta kodu dla niezalogowanego użytkownika
+    }
+  });
+</script>
 
 </html>
