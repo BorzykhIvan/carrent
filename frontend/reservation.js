@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           </div>
           <div class="reserv_loyal">
             <div class="level_reservation"><p>Poziom stałego klienta</p></div>
-            <div class="level_reservation1"><p>POZIOM ${user.loyalty_level.level + 1}</p></div>
+            <div class="level_reservation1"><p>POZIOM ${user.loyalty_level ? user.loyalty_level.level + 1 : 1}</p></div>
           </div>
           <div class="promo_reservation">
             <div class="kod_reservation"><p>Kod promocyjny</p></div>
@@ -271,7 +271,7 @@ function sendReservationData(start_date, end_date, car_id) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `${authToken}`,
+      'Authorization': `Token ${authToken}`,
     },
   })
     .then(response => response.json())

@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(authData => {
             let username = authData.email;
             console.log(username);
+            console.log(authToken);
             if (username) {
                 // Заменяем изображение на имя пользователя
                 var loginLink = document.getElementById('loginLink');
