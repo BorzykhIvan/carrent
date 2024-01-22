@@ -48,6 +48,7 @@
         <div class="panel">
           <p class="first_name">IMIE NAZWISKO</p>
           <p class="email">mail@gmail.com</p>
+          <p class="email" id="logout">WYLOGUJ SIĘ</p>
         </div>
         <div class="panel_right">
           <img class="panel_arrow" src="https://fra1.digitaloceanspaces.com/carrentbucket/static/Arrowkonto.svg">
@@ -263,6 +264,27 @@
     });
 
   });
+  // Функция для удаления файлов cookie
+    function clearCookies() {
+        // Получаем все куки
+        var cookies = document.cookie.split(";");
+
+        // Проходимся по каждому куки и удаляем его, устанавливая истекшую дату
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            var eqPos = cookie.indexOf("=");
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+    }
+
+    // Назначаем обработчик события для элемента с id="logout"
+    document.getElementById("logout").addEventListener("click", function () {
+        // При клике вызываем функцию для удаления куки
+        clearCookies();
+        alert("Wylogowanie!");
+        location.reload();
+    });
 </script>
 <script src="kontoklienta_slider.js"></script>
 <script src="timer.js"></script>
